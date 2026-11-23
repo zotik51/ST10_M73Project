@@ -53,7 +53,11 @@ ESFR = {
     0xF1C0: "EXICON", 0xF1C2: "ODP2", 0xF1C6: "ODP3", 0xF1CE: "ODP6", 0xF1D2: "ODP7",
     0xF1D6: "ODP8", 0xF07C: "IDCHIP", 0xF024: "XPERCON",
     0xF186: "XP0IC", 0xF18E: "XP1IC", 0xF196: "XP2IC", 0xF19E: "XP3IC",
+    0xF17A: "T7IC", 0xF17C: "T8IC", 0xF17E: "PWMIC",
+    0xF184: "CC29IC", 0xF18C: "CC30IC", 0xF194: "CC31IC", 0xF19C: "S0TBIC",
 }
+for _i in range(13):
+    ESFR[0xF160 + 2 * _i] = f"CC{16 + _i}IC"
 
 # bit-addressable SFR names are the same as SFR names
 BIT_SFR = {}
@@ -68,3 +72,8 @@ VECTORS = {
 }
 for i in range(16):
     VECTORS[0x40 + 4 * i] = f"CC{i}INT"
+for i in range(13):
+    VECTORS[0xC0 + 4 * i] = f"CC{16 + i}INT"
+VECTORS.update({0xF4: "T7INT", 0xF8: "T8INT", 0xFC: "PWMINT",
+                0x100: "XP0INT", 0x104: "XP1INT", 0x108: "XP2INT", 0x10C: "XP3INT",
+                0x110: "CC29INT", 0x114: "CC30INT", 0x118: "CC31INT", 0x11C: "S0TBINT"})

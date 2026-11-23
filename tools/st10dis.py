@@ -172,9 +172,10 @@ class Disasm:
         if lo == 0xA:
             if hi <= 7:
                 q = b1
-                if hi in (0, 1):  # BFLDL/H bitoff,#mask8,#data8
+                if hi in (0, 1):  # BFLDL: 0A QQ mask data / BFLDH: 1A QQ data mask
                     s, _ = self.bitoff(b1, ctx)
-                    return mk(4, BITOP[hi], f"{s}, #0x{b2:02X}, #0x{b3:02X}")
+                    mask, data = (b2, b3) if hi == 0 else (b3, b2)
+                    return mk(4, BITOP[hi], f"{s}, #0x{mask:02X}, #0x{data:02X}")
                 # bitaddr ops: op QQ ZZ qz  (src QQ.q, dst ZZ.z)
                 s1, _ = self.bitoff(b1, ctx)
                 s2, _ = self.bitoff(b2, ctx)
@@ -449,9 +450,13 @@ class Disasm:
         return None
 
     def _abs16(self, w, ctx):
-        """[Rw+#d16]: only meaningful as an absolute address under EXTP/EXTS."""
+        """[Rw+#d16]: absolute under EXTP/EXTS; without a prefix only annotated
+        when the DPP-resolved base falls into the calibration area (table+index)."""
         if ctx.ext:
             return ctx.phys(w)
+        p = ctx.phys(w)
+        if 0x74000 <= p < 0x7C000:
+            return p
         return None
 
     @staticmethod
@@ -492,8 +497,31 @@ CODE_REGIONS = [(0x000200, 0x004000), (0x018000, 0x02C000), (0x030000, 0x050000)
 
 
 def analyse(img, cal, entries, init_dpp):
+    """Two passes: the first one discovers call / pointer targets that are only
+    reachable from gap-filled code; the second starts from all of them before
+    gap filling, so real entry points win over misaligned gap guesses."""
+    dis, insns, funcs, labels, bad = _analyse(img, cal, entries, init_dpp)
+    seeds = list(entries)
+    seeds += [(a, k) for a, k in funcs.items() if k.startswith("ptr")]
+    seeds += [(a, "ptr") for a in _ptr_targets(insns) if a not in funcs or funcs[a] == "gap"]
+    return _analyse(img, cal, seeds, init_dpp)
+
+
+def _ptr_targets(insns):
+    stores = collections.defaultdict(set)
+    sites = collections.defaultdict(set)
+    for ins in insns.values():
+        if ins.store:
+            stores[ins.store[0]].add(ins.store[1])
+        if ins.slot is not None:
+            sites[ins.slot].add(ins.addr & ~0xFFFF)
+    return {seg | v for slot, segs in sites.items() for v in stores.get(slot, ()) for seg in segs}
+
+
+def _analyse(img, cal, entries, init_dpp):
     dis = Disasm(img, cal)
     insns = {}
+    covered = {}        # word address -> start of the instruction covering it
     funcs = {}          # address -> how it was found
     labels = set()
     bad = []
@@ -504,14 +532,16 @@ def analyse(img, cal, entries, init_dpp):
             while True:
                 if a in insns:
                     break
-                if not (0 <= a < len(img) - 1) or a & 1:
+                if not (0 <= a < len(img) - 1) or a & 1 or a in covered:
                     bad.append(a)
                     break
                 ins = dis.decode(a, ctx)
-                if ins is None or img[a:a + 4] == b"\xff\xff\xff\xff":
+                if ins is None or img[a:a + 4] == b"\xff\xff\xff\xff" or (ins.size == 4 and a + 2 in covered):
                     bad.append(a)
                     break
                 insns[a] = ins
+                for k in range(0, ins.size, 2):
+                    covered[a + k] = a
                 nxt = step_ctx(ctx, ins)
                 for t in ins.targets:
                     if ins.flow == "call":
@@ -533,8 +563,10 @@ def analyse(img, cal, entries, init_dpp):
         while n < 4000:
             if a in insns:
                 return n > 0
+            if a in covered:
+                return False
             ins = dis.decode(a, ctx)
-            if ins is None or img[a:a + 2] == b"\xff\xff":
+            if ins is None or img[a:a + 2] == b"\xff\xff" or (ins.size == 4 and a + 2 in covered):
                 return False
             for t in ins.targets:
                 if not (0 <= t < len(img)) or img[t:t + 2] == b"\xff\xff":
@@ -549,10 +581,10 @@ def analyse(img, cal, entries, init_dpp):
     work = collections.deque()
     for e, kind in entries:
         work.append((e, Ctx(init_dpp)))
-        if kind == "func":
-            funcs[e] = "entry"
-        else:
+        if kind == "label":
             labels.add(e)
+        else:
+            funcs[e] = "entry" if kind == "func" else kind
     explore(work)
 
     while True:
@@ -580,8 +612,8 @@ def analyse(img, cal, entries, init_dpp):
         for lo, hi in CODE_REGIONS:
             a = lo
             while a < hi:
-                if a in insns:
-                    a += insns[a].size
+                if a in covered:
+                    a += 2
                     continue
                 if img[a:a + 2] == b"\xff\xff" or img[a:a + 2] == b"\x00\x00" and img[a + 2:a + 4] in (b"\x00\x00", b"\xff\xff"):
                     a += 2
