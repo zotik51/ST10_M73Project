@@ -249,9 +249,9 @@ class Disasm:
                 kind = "S" if sub in (0, 2) else "P"
 
                 def eff(c, kind=kind, val=val, cnt=cnt, er=sub >= 2):
-                    c.ext = (kind, val, cnt + 1) if val is not None else None
+                    c.ext = (kind, val, cnt) if val is not None else None
                     if er:
-                        c.extr = cnt + 1
+                        c.extr = cnt
                 note = f"    ; {RW[m]}=0x{val:X}" if val is not None else ""
                 return mk(2, mn, f"{RW[m]}, #{cnt}{note}", effect=eff)
             if hi == 0xE:
@@ -336,7 +336,7 @@ class Disasm:
                     sub, cnt = b1 >> 6, ((b1 >> 4) & 3) + 1
                     if sub == 2:
                         def eff(c, cnt=cnt):
-                            c.extr = cnt + 1
+                            c.extr = cnt
                         return mk(2, "EXTR", f"#{cnt}", effect=eff)
                     return mk(2, "ATOMIC", f"#{cnt}")
                 if hi == 0xE:
@@ -419,9 +419,9 @@ class Disasm:
                     kind = "S" if sub in (0, 2) else "P"
 
                     def eff(c, kind=kind, v=v, cnt=cnt, er=sub >= 2):
-                        c.ext = (kind, v, cnt + 1)
+                        c.ext = (kind, v, cnt)
                         if er:
-                            c.extr = cnt + 1
+                            c.extr = cnt
                     return mk(4, mn, f"#0x{v:X}, #{cnt}", effect=eff)
                 if hi == 0xE:
                     r, _ = self.reg(b1, ctx, True)

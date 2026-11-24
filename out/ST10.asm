@@ -255,7 +255,7 @@ sub_000200:    ; found by: gap
 loc_000202:
   000202  d1 80        EXTR    #1
   000204  e6 12 2d 04  MOV     XPERCON, #0x042D
-  000208  0a 89 ff 34  BFLDL   ESFR_F112, #0xFF, #0x34
+  000208  0a 89 ff 34  BFLDL   SYSCON, #0xFF, #0x34
   00020C  1a 89 21 fb  BFLDH   SYSCON, #0xFB, #0x21
   000210  0a 86 3f 1e  BFLDL   BUSCON0, #0x3F, #0x1E
   000214  1a 86 00 df  BFLDH   BUSCON0, #0xDF, #0x00
@@ -306,16 +306,16 @@ sub_000294:    ; found by: call
   000294  e6 82 00 00  MOV     P1L, #0x0000
   000298  d1 80        EXTR    #1
   00029A  e6 82 00 00  MOV     DP1L, #0x0000
-  00029E  e6 83 03 00  MOV     DP1H, #0x0003
+  00029E  e6 83 03 00  MOV     P1H, #0x0003
   0002A2  d1 80        EXTR    #1
   0002A4  e6 83 33 00  MOV     DP1H, #0x0033
-  0002A8  e6 e0 0f 1f  MOV     EXICON, #0x1F0F
+  0002A8  e6 e0 0f 1f  MOV     P2, #0x1F0F
   0002AC  e6 e1 1f 1f  MOV     DP2, #0x1F1F
   0002B0  e6 e2 53 06  MOV     P3, #0x0653
   0002B4  e6 e3 5b 26  MOV     DP3, #0x265B
   0002B8  d1 80        EXTR    #1
   0002BA  e6 e5 00 00  MOV     ESFR_F1CA, #0x0000
-  0002BE  e6 e4 f0 00  MOV     ESFR_F1C8, #0x00F0
+  0002BE  e6 e4 f0 00  MOV     P4, #0x00F0
   0002C2  e6 e5 d0 00  MOV     DP4, #0x00D0
   0002C6  e6 e6 24 00  MOV     P6, #0x0024
   0002CA  e6 e7 24 00  MOV     DP6, #0x0024
@@ -491,7 +491,7 @@ sub_000456:    ; found by: call
   00045A  e6 d9 17 40  MOV     SSCCON, #0x4017
   00045E  d1 80        EXTR    #1
   000460  e6 5a 27 00  MOV     SSCBR, #0x0027
-  000464  ff d9        BSET    ESFR_F1B2.15
+  000464  ff d9        BSET    SSCCON.15
   000466  df e2        BSET    P3.13
   000468  9f e2        BSET    P3.9
   00046A  cc 00        NOP     
@@ -709,7 +709,7 @@ sub_001072:    ; found by: gap
   0010EE  e6 c2 00 00  MOV     CC29IC, #0x0000
   0010F2  e6 c6 00 00  MOV     CC30IC, #0x0000
   0010F6  e6 ca 00 00  MOV     CC31IC, #0x0000
-  0010FA  e6 b5 00 00  MOV     CC21IC, #0x0000
+  0010FA  e6 b5 00 00  MOV     CRIC, #0x0000
   0010FE  e6 ce 00 00  MOV     T0IC, #0x0000
   001102  e6 cf 00 00  MOV     T1IC, #0x0000
   001106  e6 b0 00 00  MOV     T2IC, #0x0000
@@ -720,12 +720,12 @@ sub_001072:    ; found by: gap
   00111A  d1 90        EXTR    #2
   00111C  e6 bd 00 00  MOV     T7IC, #0x0000
   001120  e6 be 00 00  MOV     T8IC, #0x0000
-  001124  e6 cc 00 00  MOV     ESFR_F198, #0x0000
+  001124  e6 cc 00 00  MOV     ADCIC, #0x0000
   001128  e6 cd 00 00  MOV     ADEIC, #0x0000
   00112C  e6 b6 00 00  MOV     S0TIC, #0x0000
   001130  d1 80        EXTR    #1
   001132  e6 ce 00 00  MOV     S0TBIC, #0x0000
-  001136  e6 b7 00 00  MOV     CC23IC, #0x0000
+  001136  e6 b7 00 00  MOV     S0RIC, #0x0000
   00113A  e6 b8 00 00  MOV     S0EIC, #0x0000
   00113E  e6 b9 00 00  MOV     SSCTIC, #0x0000
   001142  e6 ba 00 00  MOV     SSCRIC, #0x0000
@@ -751,28 +751,28 @@ sub_001164:    ; found by: gap
   00117C  d1 90        EXTR    #2
   00117E  e6 83 37 00  MOV     DP1H, #0x0037
   001182  e6 e1 00 00  MOV     ODP2, #0x0000
-  001186  e6 e0 0f 1f  MOV     EXICON, #0x1F0F
+  001186  e6 e0 0f 1f  MOV     P2, #0x1F0F
   00118A  e6 e1 1f 1f  MOV     DP2, #0x1F1F
   00118E  d1 80        EXTR    #1
   001190  e6 e3 00 00  MOV     ODP3, #0x0000
-  001194  e6 e2 53 06  MOV     ESFR_F1C4, #0x0653
+  001194  e6 e2 53 06  MOV     P3, #0x0653
   001198  e6 e3 5b 26  MOV     DP3, #0x265B
   00119C  d1 80        EXTR    #1
   00119E  e6 e5 00 00  MOV     ESFR_F1CA, #0x0000
-  0011A2  e6 e4 f0 00  MOV     ESFR_F1C8, #0x00F0
+  0011A2  e6 e4 f0 00  MOV     P4, #0x00F0
   0011A6  e6 e5 d0 00  MOV     DP4, #0x00D0
   0011AA  e6 d2 ff e3  MOV     P5DIDIS, #0xE3FF
   0011AE  d1 80        EXTR    #1
   0011B0  e6 e7 00 00  MOV     ODP6, #0x0000
-  0011B4  e6 e6 24 00  MOV     ESFR_F1CC, #0x0024
+  0011B4  e6 e6 24 00  MOV     P6, #0x0024
   0011B8  e6 e7 24 00  MOV     DP6, #0x0024
   0011BC  d1 80        EXTR    #1
   0011BE  e6 e9 00 00  MOV     ODP7, #0x0000
-  0011C2  e6 e8 57 00  MOV     ESFR_F1D0, #0x0057
+  0011C2  e6 e8 57 00  MOV     P7, #0x0057
   0011C6  e6 e9 5f 00  MOV     DP7, #0x005F
   0011CA  d1 80        EXTR    #1
   0011CC  e6 eb 00 00  MOV     ODP8, #0x0000
-  0011D0  e6 ea 3c 00  MOV     ESFR_F1D4, #0x003C
+  0011D0  e6 ea 3c 00  MOV     P8, #0x003C
   0011D4  e6 eb bf 00  MOV     DP8, #0x00BF
   0011D8  d1 80        EXTR    #1
   0011DA  e6 e2 0e 00  MOV     ESFR_F1C4, #0x000E
@@ -1493,7 +1493,7 @@ loc_0019CE:
 sub_0019D2:    ; found by: gap
   0019D2  d7 40 3c 00  EXTP    #0x3C, #1
   0019D6  f2 fc 94 06  MOV     R12, 0x0694                       ; [F0694]
-  0019DA  f6 fc 54 e1  MOV     0xE154, R12                       ; [F2154]
+  0019DA  f6 fc 54 e1  MOV     0xE154, R12                       ; [0E154]
   0019DE  e6 fd be 0a  MOV     R13, #0x0ABE
   0019E2  e6 fe 0f 00  MOV     R14, #0x000F
   0019E6  f6 fd 2e e1  MOV     0xE12E, R13                       ; [0E12E]
@@ -1513,16 +1513,16 @@ sub_0019D2:    ; found by: gap
   001A1E  64 f4 1a e1  AND     0xE11A, R4                        ; [0E11A]
   001A22  d7 40 3c 00  EXTP    #0x3C, #1
   001A26  f2 f4 92 06  MOV     R4, 0x0692                        ; [F0692]
-  001A2A  f6 f4 52 e1  MOV     0xE152, R4                        ; [F2152]
+  001A2A  f6 f4 52 e1  MOV     0xE152, R4                        ; [0E152]
   001A2E  d7 40 3c 00  EXTP    #0x3C, #1
   001A32  f2 f5 96 06  MOV     R5, 0x0696                        ; [F0696]
-  001A36  f6 f5 56 e1  MOV     0xE156, R5                        ; [F2156]
+  001A36  f6 f5 56 e1  MOV     0xE156, R5                        ; [0E156]
   001A3A  d7 40 3c 00  EXTP    #0x3C, #1
   001A3E  f2 fa 98 06  MOV     R10, 0x0698                       ; [F0698]
-  001A42  f6 fa 58 e1  MOV     0xE158, R10                       ; [F2158]
+  001A42  f6 fa 58 e1  MOV     0xE158, R10                       ; [0E158]
   001A46  d7 40 3c 00  EXTP    #0x3C, #1
   001A4A  f2 fb 9a 06  MOV     R11, 0x069A                       ; [F069A]
-  001A4E  f6 fb 5a e1  MOV     0xE15A, R11                       ; [F215A]
+  001A4E  f6 fb 5a e1  MOV     0xE15A, R11                       ; [0E15A]
   001A52  f7 8e 49 e1  MOVB    0xE149, ZEROS                     ; [0E149]
   001A56  f3 f2 24 e1  MOVB    RL1, 0xE124                       ; [0E124]
   001A5A  49 21        CMPB    RL1, #1
@@ -1534,7 +1534,7 @@ loc_001A64:
   001A66  5c 1c        SHL     R12, #1
   001A68  d7 40 3c 00  EXTP    #0x3C, #1
   001A6C  d4 dc 9e 06  MOV     R13, [R12+#0x069E]                ; [F069E]
-  001A70  c4 dc 34 e1  MOV     [R12+#0xE134], R13                ; [F2134]
+  001A70  c4 dc 34 e1  MOV     [R12+#0xE134], R13
   001A74  09 21        ADDB    RL1, #1
   001A76  47 f2 08 00  CMPB    RL1, #0x08
   001A7A  8d f4        JMPR    cc_ULT, loc_001A64
@@ -2164,7 +2164,7 @@ loc_002464:
   002466  5c 1d        SHL     R13, #1
   002468  d7 40 3c 00  EXTP    #0x3C, #1
   00246C  d4 ed ae 06  MOV     R14, [R13+#0x06AE]                ; [F06AE]
-  002470  c4 ed 6e e1  MOV     [R13+#0xE16E], R14                ; [F216E]
+  002470  c4 ed 6e e1  MOV     [R13+#0xE16E], R14
   002474  09 21        ADDB    RL1, #1
   002476  47 f2 08 00  CMPB    RL1, #0x08
   00247A  8d f4        JMPR    cc_ULT, loc_002464
@@ -2275,19 +2275,19 @@ sub_002594:    ; found by: gap
   0025A6  64 f6 5e e1  AND     0xE15E, R6                        ; [0E15E]
   0025AA  d7 40 3c 00  EXTP    #0x3C, #1
   0025AE  f2 f6 92 06  MOV     R6, 0x0692                        ; [F0692]
-  0025B2  f6 f6 60 e1  MOV     0xE160, R6                        ; [F2160]
+  0025B2  f6 f6 60 e1  MOV     0xE160, R6                        ; [0E160]
   0025B6  d7 40 3c 00  EXTP    #0x3C, #1
   0025BA  f2 fd 94 06  MOV     R13, 0x0694                       ; [F0694]
-  0025BE  f6 fd 62 e1  MOV     0xE162, R13                       ; [F2162]
+  0025BE  f6 fd 62 e1  MOV     0xE162, R13                       ; [0E162]
   0025C2  d7 40 3c 00  EXTP    #0x3C, #1
   0025C6  f2 fe 96 06  MOV     R14, 0x0696                       ; [F0696]
-  0025CA  f6 fe 64 e1  MOV     0xE164, R14                       ; [F2164]
+  0025CA  f6 fe 64 e1  MOV     0xE164, R14                       ; [0E164]
   0025CE  d7 40 3c 00  EXTP    #0x3C, #1
   0025D2  f2 ff 98 06  MOV     R15, 0x0698                       ; [F0698]
-  0025D6  f6 ff 66 e1  MOV     0xE166, R15                       ; [F2166]
+  0025D6  f6 ff 66 e1  MOV     0xE166, R15                       ; [0E166]
   0025DA  d7 40 3c 00  EXTP    #0x3C, #1
   0025DE  f2 f1 9a 06  MOV     R1, 0x069A                        ; [F069A]
-  0025E2  f6 f1 68 e1  MOV     0xE168, R1                        ; [F2168]
+  0025E2  f6 f1 68 e1  MOV     0xE168, R1                        ; [0E168]
   0025E6  e7 f4 c3 00  MOVB    RL2, #0xC3
   0025EA  f0 3c        MOV     R3, R12
   0025EC  08 c1        ADD     R12, #1
@@ -2396,7 +2396,7 @@ sub_002672:    ; found by: gap
   002702  fd 31        JMPR    cc_ULE, loc_002766
   002704  d7 40 3c 00  EXTP    #0x3C, #1
   002708  f2 fd 8a 06  MOV     R13, 0x068A                       ; [F068A]
-  00270C  f4 4f 06 00  MOVB    RL2, [R15+#0x0006]                ; [F0006]
+  00270C  f4 4f 06 00  MOVB    RL2, [R15+#0x0006]                ; [74006]
   002710  c0 42        MOVBZ   R4, RL1
   002712  7c 12        SHR     R2, #1
   002714  c0 4e        MOVBZ   R4, RL7
@@ -2536,7 +2536,7 @@ loc_00286C:
   00286E  5c 1c        SHL     R12, #1
   002870  d7 40 3c 00  EXTP    #0x3C, #1
   002874  d4 dc be 06  MOV     R13, [R12+#0x06BE]                ; [F06BE]
-  002878  c4 dc 6e e1  MOV     [R12+#0xE16E], R13                ; [F216E]
+  002878  c4 dc 6e e1  MOV     [R12+#0xE16E], R13
   00287C  09 21        ADDB    RL1, #1
   00287E  47 f2 08 00  CMPB    RL1, #0x08
   002882  8d f4        JMPR    cc_ULT, loc_00286C
@@ -4971,12 +4971,12 @@ loc_0183CE:
   0183E4  e0 ec        MOV     R12, #14
   0183E6  dc 0c        EXTS    R12, #1    ; R12=0xE
   0183E8  b8 67        MOV     [R7], R6
-  0183EA  f2 f7 58 b2  MOV     R7, 0xB258                        ; [EB258]
+  0183EA  f2 f7 58 b2  MOV     R7, 0xB258                        ; [F3258]
   0183EE  e6 fc 10 00  MOV     R12, #0x0010
   0183F2  e0 ed        MOV     R13, #14
   0183F4  dc 0d        EXTS    R13, #1    ; R13=0xE
   0183F6  b8 7c        MOV     [R12], R7
-  0183F8  f2 f7 5a b2  MOV     R7, 0xB25A                        ; [EB25A]
+  0183F8  f2 f7 5a b2  MOV     R7, 0xB25A                        ; [F325A]
   0183FC  e6 fc 12 00  MOV     R12, #0x0012
   018400  e0 ed        MOV     R13, #14
 
@@ -4984,12 +4984,12 @@ loc_0183CE:
 sub_018402:    ; found by: call
   018402  dc 0d        EXTS    R13, #1    ; R13=0xE
   018404  b8 7c        MOV     [R12], R7
-  018406  f2 f7 60 b2  MOV     R7, 0xB260                        ; [EB260]
+  018406  f2 f7 60 b2  MOV     R7, 0xB260                        ; [F3260]
   01840A  e0 8c        MOV     R12, #8
   01840C  e0 ed        MOV     R13, #14
   01840E  dc 0d        EXTS    R13, #1    ; R13=0xE
   018410  b8 7c        MOV     [R12], R7
-  018412  f2 f7 62 b2  MOV     R7, 0xB262                        ; [EB262]
+  018412  f2 f7 62 b2  MOV     R7, 0xB262                        ; [F3262]
   018416  e0 ac        MOV     R12, #10
   018418  e0 ed        MOV     R13, #14
   01841A  dc 0d        EXTS    R13, #1    ; R13=0xE
@@ -5708,12 +5708,12 @@ loc_018A6A:
   018AC4  e0 ee        MOV     R14, #14
   018AC6  dc 0e        EXTS    R14, #1    ; R14=0xE
   018AC8  b8 6d        MOV     [R13], R6
-  018ACA  f2 f6 5a b2  MOV     R6, 0xB25A                        ; [EB25A]
+  018ACA  f2 f6 5a b2  MOV     R6, 0xB25A                        ; [F325A]
   018ACE  e6 fd 12 00  MOV     R13, #0x0012
   018AD2  e0 ee        MOV     R14, #14
   018AD4  dc 0e        EXTS    R14, #1    ; R14=0xE
   018AD6  b8 6d        MOV     [R13], R6
-  018AD8  f4 c8 04 00  MOVB    RL6, [R8+#0x0004]                 ; [E0004]
+  018AD8  f4 c8 04 00  MOVB    RL6, [R8+#0x0004]
   018ADC  c0 c6        MOVBZ   R12, RL3
   018ADE  5c 86        SHL     R6, #8
   018AE0  f4 28 03 00  MOVB    RL1, [R8+#0x0003]
@@ -5752,12 +5752,12 @@ loc_018B12:
   018B30  e0 ee        MOV     R14, #14
   018B32  dc 0e        EXTS    R14, #1    ; R14=0xE
   018B34  b8 6d        MOV     [R13], R6
-  018B36  f2 f6 5a b2  MOV     R6, 0xB25A                        ; [EB25A]
+  018B36  f2 f6 5a b2  MOV     R6, 0xB25A                        ; [F325A]
   018B3A  e6 fd 12 00  MOV     R13, #0x0012
   018B3E  e0 ee        MOV     R14, #14
   018B40  dc 0e        EXTS    R14, #1    ; R14=0xE
   018B42  b8 6d        MOV     [R13], R6
-  018B44  f2 f6 60 b2  MOV     R6, 0xB260                        ; [EB260]
+  018B44  f2 f6 60 b2  MOV     R6, 0xB260                        ; [F3260]
   018B48  e0 8d        MOV     R13, #8
   018B4A  e0 ee        MOV     R14, #14
   018B4C  dc 0e        EXTS    R14, #1    ; R14=0xE
@@ -8356,7 +8356,7 @@ loc_01A5F4:
 sub_01A5FE:    ; found by: call
   01A5FE  d1 80        EXTR    #1
   01A600  f6 12 7e eb  MOV     0xEB7E, XPERCON                   ; [0EB7E]
-  01A604  f7 d7 06 e4  MOVB    0xE406, ESFR_F1AE                 ; [0E406]
+  01A604  f7 d7 06 e4  MOVB    0xE406, WDTCON                    ; [0E406]
   01A608  db 00        RETS    
 
 ;======================================================================
@@ -8386,40 +8386,40 @@ sub_01A60A:    ; found by: call
   01A650  e6 83 13 00  MOV     P1H, #0x0013
   01A654  d1 80        EXTR    #1
   01A656  e6 83 33 00  MOV     DP1H, #0x0033
-  01A65A  e6 e6 24 00  MOV     ESFR_F1CC, #0x0024
+  01A65A  e6 e6 24 00  MOV     P6, #0x0024
   01A65E  e6 e7 24 00  MOV     DP6, #0x0024
   01A662  0d 09        JMPR    cc_UC, loc_01A676
 loc_01A664:
   01A664  e6 83 1b 00  MOV     P1H, #0x001B
   01A668  d1 80        EXTR    #1
   01A66A  e6 83 3b 00  MOV     DP1H, #0x003B
-  01A66E  e6 e6 24 00  MOV     ESFR_F1CC, #0x0024
+  01A66E  e6 e6 24 00  MOV     P6, #0x0024
   01A672  e6 e7 34 00  MOV     DP6, #0x0034
 loc_01A676:
   01A676  d1 80        EXTR    #1
   01A678  e6 e1 00 00  MOV     ODP2, #0x0000
-  01A67C  e6 e0 0f 1f  MOV     EXICON, #0x1F0F
+  01A67C  e6 e0 0f 1f  MOV     P2, #0x1F0F
   01A680  e6 e1 1f 1f  MOV     DP2, #0x1F1F
   01A684  d1 80        EXTR    #1
   01A686  e6 e3 00 00  MOV     ODP3, #0x0000
-  01A68A  e6 e2 53 06  MOV     ESFR_F1C4, #0x0653
+  01A68A  e6 e2 53 06  MOV     P3, #0x0653
   01A68E  e6 e3 5b 26  MOV     DP3, #0x265B
   01A692  d1 80        EXTR    #1
   01A694  e6 e5 00 00  MOV     ESFR_F1CA, #0x0000
-  01A698  e6 e4 f0 00  MOV     ESFR_F1C8, #0x00F0
+  01A698  e6 e4 f0 00  MOV     P4, #0x00F0
   01A69C  e6 e5 d0 00  MOV     DP4, #0x00D0
   01A6A0  e6 d2 ff ff  MOV     P5DIDIS, #0xFFFF
   01A6A4  d1 80        EXTR    #1
   01A6A6  e6 e9 00 00  MOV     ODP7, #0x0000
-  01A6AA  e6 e8 57 00  MOV     ESFR_F1D0, #0x0057
+  01A6AA  e6 e8 57 00  MOV     P7, #0x0057
   01A6AE  e6 e9 5f 00  MOV     DP7, #0x005F
   01A6B2  d1 80        EXTR    #1
   01A6B4  e6 eb 00 00  MOV     ODP8, #0x0000
-  01A6B8  e6 ea 3c 00  MOV     ESFR_F1D4, #0x003C
+  01A6B8  e6 ea 3c 00  MOV     P8, #0x003C
   01A6BC  e6 eb bf 00  MOV     DP8, #0x00BF
   01A6C0  d1 80        EXTR    #1
   01A6C2  e6 e2 0e 00  MOV     ESFR_F1C4, #0x000E
-  01A6C6  e6 b3 00 00  MOV     CC19IC, #0x0000
+  01A6C6  e6 b3 00 00  MOV     T5IC, #0x0000
   01A6CA  e6 b4 00 00  MOV     T6IC, #0x0000
   01A6CE  e6 b5 00 00  MOV     CRIC, #0x0000
   01A6D2  e6 a3 00 00  MOV     T5CON, #0x0000
@@ -8439,7 +8439,7 @@ loc_01A676:
   01A704  e6 2b 3c f6  MOV     T8REL, #0xF63C
   01A708  e6 be 00 00  MOV     T8IC, #0x0000
   01A70C  e6 bd 00 00  MOV     T7IC, #0x0000
-  01A710  6f 90        BSET    ESFR_F120.6
+  01A710  6f 90        BSET    T78CON.6
   01A712  ef 90        BSET    T78CON.14
   01A714  e0 ed        MOV     R13, #14
   01A716  f6 fd 02 eb  MOV     0xEB02, R13                       ; [0EB02]
@@ -8448,7 +8448,7 @@ loc_01A676:
 loc_01A720:
   01A720  d1 80        EXTR    #1
   01A722  e6 12 2d 04  MOV     XPERCON, #0x042D
-  01A726  0a 89 ff 34  BFLDL   ESFR_F112, #0xFF, #0x34
+  01A726  0a 89 ff 34  BFLDL   SYSCON, #0xFF, #0x34
   01A72A  1a 89 05 ff  BFLDH   SYSCON, #0xFF, #0x05
   01A72E  0a 86 3f 0e  BFLDL   BUSCON0, #0x3F, #0x0E
   01A732  1a 86 04 df  BFLDH   BUSCON0, #0xDF, #0x04
@@ -10747,7 +10747,7 @@ sub_01BE06:    ; found by: call
   01BE14  e6 d9 37 c0  MOV     SSCCON, #0xC037
   01BE18  d1 80        EXTR    #1
   01BE1A  e6 5a 27 00  MOV     SSCBR, #0x0027
-  01BE1E  df e2        BSET    ESFR_F1C4.13
+  01BE1E  df e2        BSET    P3.13
   01BE20  9f e2        BSET    P3.9
   01BE22  db 00        RETS    
 
@@ -10881,7 +10881,7 @@ sub_01BF3A:    ; found by: call
   01BF3E  e6 d9 17 c0  MOV     SSCCON, #0xC017
   01BF42  d1 80        EXTR    #1
   01BF44  e6 5a 09 00  MOV     SSCBR, #0x0009
-  01BF48  df e2        BSET    ESFR_F1C4.13
+  01BF48  df e2        BSET    P3.13
   01BF4A  9f e2        BSET    P3.9
   01BF4C  db 00        RETS    
 
@@ -11342,7 +11342,7 @@ loc_01C3FA:
   01C3FA  c2 f8 29 e0  MOVBZ   R8, 0xE029                        ; [0E029]
   01C3FE  d7 40 18 00  EXTP    #0x18, #1
   01C402  f4 28 00 07  MOVB    RL1, [R8+#0x0700]                 ; [60700]
-  01C406  75 f2 56 e0  ORB     0xE056, RL1                       ; [62056]
+  01C406  75 f2 56 e0  ORB     0xE056, RL1                       ; [0E056]
 loc_01C40A:
   01C40A  9a 01 01 10  JNB     0xFD02.1, loc_01C410
   01C40E  7f ca        BSET    CC14IC.7
@@ -11962,7 +11962,7 @@ sub_01C9D6:    ; found by: call
   01C9DA  e6 d2 ff fb  MOV     P5DIDIS, #0xFBFF
   01C9DE  d1 80        EXTR    #1
   01C9E0  e6 50 00 00  MOV     ADDAT2, #0x0000
-  01C9E4  e6 d0 00 10  MOV     ESFR_F1A0, #0x1000
+  01C9E4  e6 d0 00 10  MOV     ADCON, #0x1000
   01C9E8  db 00        RETS    
 
 ;======================================================================
@@ -11992,7 +11992,7 @@ sub_01CA06:    ; found by: call
   01CA24  f6 fc 56 f0  MOV     T8REL, R12
   01CA28  d1 80        EXTR    #1
   01CA2A  e6 be 5d 00  MOV     T8IC, #0x005D
-  01CA2E  ef 90        BSET    ESFR_F120.14
+  01CA2E  ef 90        BSET    T78CON.14
   01CA30  db 00        RETS    
 
 ;======================================================================
@@ -12001,7 +12001,7 @@ sub_01CA32:    ; found by: call
   01CA36  9a fc 07 00  JNB     R12.0, loc_01CA48
   01CA3A  d1 80        EXTR    #1
   01CA3C  1f 83        BSET    DP1H.1
-  01CA3E  5f e7        BSET    ODP6.5
+  01CA3E  5f e7        BSET    DP6.5
   01CA40  7f eb        BSET    DP8.7
   01CA42  1f 83        BSET    P1H.1
   01CA44  5f e6        BSET    P6.5
@@ -12030,10 +12030,10 @@ sub_01CA4A:    ; found by: call
   01CA7E  f7 8e 44 00  MOVB    0x0044, ZEROS                     ; [F4044]
   01CA82  d7 40 18 00  EXTP    #0x18, #1
   01CA86  f3 f2 10 00  MOVB    RL1, 0x0010                       ; [60010]
-  01CA8A  f7 f2 40 00  MOVB    0x0040, RL1                       ; [60040]
+  01CA8A  f7 f2 40 00  MOVB    0x0040, RL1                       ; [F4040]
   01CA8E  d7 40 18 00  EXTP    #0x18, #1
   01CA92  f3 f4 02 00  MOVB    RL2, 0x0002                       ; [60002]
-  01CA96  f7 f4 0a 00  MOVB    0x000A, RL2                       ; [6000A]
+  01CA96  f7 f4 0a 00  MOVB    0x000A, RL2                       ; [F400A]
   01CA9A  f7 f4 0b 00  MOVB    0x000B, RL2                       ; [F400B]
   01CA9E  f6 8e 9c 03  MOV     0x039C, ZEROS                     ; [F439C]
   01CAA2  f6 8e 9a 03  MOV     0x039A, ZEROS                     ; [F439A]
@@ -12117,15 +12117,15 @@ loc_01CB3C:
   01CBA8  f6 8e ba 03  MOV     0x03BA, ZEROS                     ; [F43BA]
   01CBAC  d7 40 18 00  EXTP    #0x18, #1
   01CBB0  f2 f1 5a 00  MOV     R1, 0x005A                        ; [6005A]
-  01CBB4  f6 f1 a2 00  MOV     0x00A2, R1                        ; [600A2]
+  01CBB4  f6 f1 a2 00  MOV     0x00A2, R1                        ; [F40A2]
   01CBB8  f6 f1 a0 00  MOV     0x00A0, R1                        ; [F40A0]
   01CBBC  d7 40 18 00  EXTP    #0x18, #1
   01CBC0  f2 f2 0e 06  MOV     R2, 0x060E                        ; [6060E]
-  01CBC4  f6 f2 56 07  MOV     0x0756, R2                        ; [60756]
+  01CBC4  f6 f2 56 07  MOV     0x0756, R2                        ; [F4756]
   01CBC8  f6 f2 68 07  MOV     0x0768, R2                        ; [F4768]
   01CBCC  d7 40 18 00  EXTP    #0x18, #1
   01CBD0  f2 f3 0c 06  MOV     R3, 0x060C                        ; [6060C]
-  01CBD4  f6 f3 5e 07  MOV     0x075E, R3                        ; [6075E]
+  01CBD4  f6 f3 5e 07  MOV     0x075E, R3                        ; [F475E]
   01CBD8  f6 f3 66 07  MOV     0x0766, R3                        ; [F4766]
   01CBDC  f6 8e 96 03  MOV     0x0396, ZEROS                     ; [F4396]
   01CBE0  f6 8e 98 03  MOV     0x0398, ZEROS                     ; [F4398]
@@ -12135,7 +12135,7 @@ loc_01CB3C:
   01CBF0  f7 f8 a5 02  MOVB    0x02A5, RL4                       ; [F42A5]
   01CBF4  d7 40 18 00  EXTP    #0x18, #1
   01CBF8  f2 f5 b0 02  MOV     R5, 0x02B0                        ; [602B0]
-  01CBFC  f6 f5 c0 02  MOV     0x02C0, R5                        ; [602C0]
+  01CBFC  f6 f5 c0 02  MOV     0x02C0, R5                        ; [F42C0]
   01CC00  f7 8e 04 06  MOVB    0x0604, ZEROS                     ; [F4604]
   01CC04  f7 8e c8 06  MOVB    0x06C8, ZEROS                     ; [F46C8]
   01CC08  f6 8e f4 06  MOV     0x06F4, ZEROS                     ; [F46F4]
@@ -12289,7 +12289,7 @@ sub_01CCC6:    ; found by: call
   01CDE0  f6 fc 36 00  MOV     0x0036, R12                       ; [F0036]
   01CDE4  d7 40 18 00  EXTP    #0x18, #1
   01CDE8  f2 fc 12 05  MOV     R12, 0x0512                       ; [60512]
-  01CDEC  f6 fc 68 00  MOV     0x0068, R12                       ; [60068]
+  01CDEC  f6 fc 68 00  MOV     0x0068, R12                       ; [F0068]
   01CDF0  f6 fc 6a 00  MOV     0x006A, R12                       ; [F006A]
   01CDF4  f6 fc 6c 00  MOV     0x006C, R12                       ; [F006C]
   01CDF8  f6 fc 6e 00  MOV     0x006E, R12                       ; [F006E]
@@ -12356,7 +12356,7 @@ loc_01CE9A:
   01CEC4  f6 8f 6c 00  MOV     0x006C, ONES                      ; [F406C]
   01CEC8  d7 40 18 00  EXTP    #0x18, #1
   01CECC  f3 f6 0a 00  MOVB    RL3, 0x000A                       ; [6000A]
-  01CED0  f7 f6 10 00  MOVB    0x0010, RL3                       ; [60010]
+  01CED0  f7 f6 10 00  MOVB    0x0010, RL3                       ; [F4010]
   01CED4  f7 8e 2e 00  MOVB    0x002E, ZEROS                     ; [F402E]
   01CED8  f6 8e da 00  MOV     0x00DA, ZEROS                     ; [F40DA]
   01CEDC  f6 8e dc 00  MOV     0x00DC, ZEROS                     ; [F40DC]
@@ -12375,7 +12375,7 @@ loc_01CE9A:
   01CF08  ef 0c        BSET    0xFD18.14
   01CF0A  d7 40 18 00  EXTP    #0x18, #1
   01CF0E  f3 f2 03 00  MOVB    RL1, 0x0003                       ; [60003]
-  01CF12  f7 f2 d4 03  MOVB    0x03D4, RL1                       ; [603D4]
+  01CF12  f7 f2 d4 03  MOVB    0x03D4, RL1                       ; [F43D4]
   01CF16  3e 28        BCLR    0xFD50.3
   01CF18  f7 8e 16 00  MOVB    0x0016, ZEROS                     ; [F4016]
   01CF1C  f7 8e 30 00  MOVB    0x0030, ZEROS                     ; [F4030]
@@ -12384,7 +12384,7 @@ loc_01CE9A:
   01CF28  f7 8e 33 00  MOVB    0x0033, ZEROS                     ; [F4033]
   01CF2C  d7 40 18 00  EXTP    #0x18, #1
   01CF30  f2 f9 2c 00  MOV     R9, 0x002C                        ; [6002C]
-  01CF34  f6 f9 6a 00  MOV     0x006A, R9                        ; [6006A]
+  01CF34  f6 f9 6a 00  MOV     0x006A, R9                        ; [F406A]
   01CF38  f6 f9 68 00  MOV     0x0068, R9                        ; [F4068]
   01CF3C  f6 8e 6e 00  MOV     0x006E, ZEROS                     ; [F406E]
   01CF40  f6 8e 60 00  MOV     0x0060, ZEROS                     ; [F4060]
@@ -12428,7 +12428,7 @@ loc_01CE9A:
   01CFA2  8a fd 07 00  JB      R13.0, loc_01CFB4
   01CFA6  d1 80        EXTR    #1
   01CFA8  2f 83        BSET    DP1H.2
-  01CFAA  2f 83        BSET    DP1H.2
+  01CFAA  2f 83        BSET    P1H.2
   01CFAC  7f eb        BSET    DP8.7
   01CFAE  7e ea        BCLR    P8.7
   01CFB0  5f e7        BSET    DP6.5
@@ -12462,7 +12462,7 @@ loc_01CFE2:
   01CFF6  0f e2        BSET    P3.0
   01CFF8  d1 80        EXTR    #1
   01CFFA  4f 83        BSET    DP1H.4
-  01CFFC  4f 83        BSET    DP1H.4
+  01CFFC  4f 83        BSET    P1H.4
   01CFFE  6e ea        BCLR    P8.6
   01D000  6e eb        BCLR    DP8.6
   01D002  7e e6        BCLR    P6.7
@@ -12846,13 +12846,13 @@ loc_01D3F2:
 loc_01D42A:
   01D42A  d7 40 18 00  EXTP    #0x18, #1
   01D42E  f2 fe d0 03  MOV     R14, 0x03D0                       ; [603D0]
-  01D432  c2 fc c2 a0  MOVBZ   R12, 0xA0C2                       ; [620C2]
+  01D432  c2 fc c2 a0  MOVBZ   R12, 0xA0C2                       ; [F20C2]
   01D436  5c 1c        SHL     R12, #1
   01D438  d7 40 3d 00  EXTP    #0x3D, #1
   01D43C  c4 ec 14 02  MOV     [R12+#0x0214], R14                ; [F4214]
   01D440  d7 40 3d 00  EXTP    #0x3D, #1
   01D444  c4 dc 1c 02  MOV     [R12+#0x021C], R13                ; [F421C]
-  01D448  25 8f c2 a0  SUBB    0xA0C2, ONES                      ; [F60C2]
+  01D448  25 8f c2 a0  SUBB    0xA0C2, ONES                      ; [F20C2]
   01D44C  f3 f2 c2 a0  MOVB    RL1, 0xA0C2                       ; [F20C2]
   01D450  49 24        CMPB    RL1, #4
   01D452  8d eb        JMPR    cc_ULT, loc_01D42A
@@ -13017,7 +13017,7 @@ loc_01D582:
   01D5AE  f6 fd 76 04  MOV     0x0476, R13                       ; [F4476]
   01D5B2  d7 40 18 00  EXTP    #0x18, #1
   01D5B6  f2 fe ea 03  MOV     R14, 0x03EA                       ; [603EA]
-  01D5BA  f6 fe 70 04  MOV     0x0470, R14                       ; [60470]
+  01D5BA  f6 fe 70 04  MOV     0x0470, R14                       ; [F4470]
   01D5BE  f6 fe 72 04  MOV     0x0472, R14                       ; [F4472]
   01D5C2  f6 fe 74 04  MOV     0x0474, R14                       ; [F4474]
   01D5C6  f0 ce        MOV     R12, R14
@@ -13621,7 +13621,7 @@ loc_01DB6A:
   01DB7E  d1 90        EXTR    #2
   01DB80  e6 be 00 00  MOV     T8IC, #0x0000
   01DB84  e6 bd 00 00  MOV     T7IC, #0x0000
-  01DB88  e6 c8 00 00  MOV     ESFR_F190, #0x0000
+  01DB88  e6 c8 00 00  MOV     CC12IC, #0x0000
   01DB8C  e6 cf 00 00  MOV     T1IC, #0x0000
   01DB90  e6 b6 00 00  MOV     S0TIC, #0x0000
   01DB94  e6 b7 00 00  MOV     S0RIC, #0x0000
@@ -13632,7 +13632,7 @@ loc_01DB6A:
   01DBA6  e6 b3 00 00  MOV     CC19IC, #0x0000
   01DBAA  e6 b4 00 00  MOV     CC20IC, #0x0000
   01DBAE  e6 b5 00 00  MOV     CC21IC, #0x0000
-  01DBB2  e6 c4 00 00  MOV     ESFR_F188, #0x0000
+  01DBB2  e6 c4 00 00  MOV     CC8IC, #0x0000
   01DBB6  e6 c5 00 00  MOV     CC9IC, #0x0000
   01DBBA  e6 c6 00 00  MOV     CC10IC, #0x0000
   01DBBE  e6 c7 00 00  MOV     CC11IC, #0x0000
@@ -13646,7 +13646,7 @@ loc_01DB6A:
   01DBDC  d1 90        EXTR    #2
   01DBDE  e6 b1 00 00  MOV     CC17IC, #0x0000
   01DBE2  e6 c1 00 00  MOV     ESFR_F182, #0x0000
-  01DBE6  e6 c3 00 00  MOV     XP0IC, #0x0000
+  01DBE6  e6 c3 00 00  MOV     CC7IC, #0x0000
   01DBEA  e6 98 00 00  MOV     PWMCON0, #0x0000
   01DBEE  e6 99 00 00  MOV     PWMCON1, #0x0000
   01DBF2  0f e8        BSET    P7.0
@@ -13795,7 +13795,7 @@ loc_01DD74:
   01DD7A  d7 40 18 00  EXTP    #0x18, #1
   01DD7E  d4 c2 00 22  MOV     R12, [R2+#0x2200]                 ; [62200]
 loc_01DD82:
-  01DD82  c2 fd 3c e0  MOVBZ   R13, 0xE03C                       ; [6203C]
+  01DD82  c2 fd 3c e0  MOVBZ   R13, 0xE03C                       ; [0E03C]
   01DD86  c2 fe 37 e0  MOVBZ   R14, 0xE037                       ; [0E037]
   01DD8A  f4 2e 08 32  MOVB    RL1, [R14+#0x3208]                ; [77208] Таблица квантования ДПДЗ
   01DD8E  c0 2e        MOVBZ   R2, RL7
@@ -14780,7 +14780,7 @@ loc_0205A6:
 loc_020694:
   020694  d1 80        EXTR    #1
   020696  e6 bf 00 00  MOV     PWMIC, #0x0000
-  02069A  e6 ca 04 00  MOV     CC31IC, #0x0004
+  02069A  e6 ca 04 00  MOV     CC14IC, #0x0004
   02069E  e6 c8 05 00  MOV     CC12IC, #0x0005
   0206A2  e6 cf 08 00  MOV     T1IC, #0x0008
   0206A6  e6 b6 0c 00  MOV     S0TIC, #0x000C
@@ -14793,14 +14793,14 @@ loc_020694:
   0206BE  e6 b3 15 00  MOV     CC19IC, #0x0015
   0206C2  e6 b4 16 00  MOV     CC20IC, #0x0016
   0206C6  e6 b5 17 00  MOV     CC21IC, #0x0017
-  0206CA  e6 bc 20 00  MOV     CC28IC, #0x0020
+  0206CA  e6 bc 20 00  MOV     CC0IC, #0x0020
   0206CE  e6 bd 21 00  MOV     CC1IC, #0x0021
   0206D2  e6 be 22 00  MOV     CC2IC, #0x0022
   0206D6  e6 bf 23 00  MOV     CC3IC, #0x0023
   0206DA  e6 cb 28 00  MOV     CC15IC, #0x0028
   0206DE  d1 80        EXTR    #1
   0206E0  e6 be 29 00  MOV     T8IC, #0x0029
-  0206E4  e6 c0 2a 00  MOV     ESFR_F180, #0x002A
+  0206E4  e6 c0 2a 00  MOV     CC4IC, #0x002A
   0206E8  da 02 9a 4c  CALLS   sub_024C9A
   0206EC  f3 f2 ca 80  MOVB    RL1, 0x80CA                       ; [F00CA]
   0206F0  47 f2 99 00  CMPB    RL1, #0x99
@@ -16857,7 +16857,7 @@ loc_021B32:
   021B38  d7 40 18 00  EXTP    #0x18, #1
   021B3C  d4 c2 00 22  MOV     R12, [R2+#0x2200]                 ; [62200]
 loc_021B40:
-  021B40  c2 fd 3c e0  MOVBZ   R13, 0xE03C                       ; [6203C]
+  021B40  c2 fd 3c e0  MOVBZ   R13, 0xE03C                       ; [0E03C]
   021B44  f0 ea        MOV     R14, R10
   021B46  f3 f2 4e 20  MOVB    RL1, 0x204E                       ; [7604E] Подмена параметров диагностики+20
   021B4A  8a f1 03 40  JB      R1.4, loc_021B54
@@ -17221,7 +17221,7 @@ loc_021F7C:
   021F88  d7 10 0f 00  EXTS    #0xF, #2
   021F8C  98 2d        MOV     R2, [R13+]
   021F8E  98 3d        MOV     R3, [R13+]
-  021F90  f6 f2 08 00  MOV     0x0008, R2                        ; [F0008]
+  021F90  f6 f2 08 00  MOV     0x0008, R2                        ; [74008]
   021F94  f6 f3 0a 00  MOV     0x000A, R3                        ; [7400A]
   021F98  f0 4e        MOV     R4, R14
   021F9A  e0 75        MOV     R5, #7
@@ -17542,7 +17542,7 @@ loc_02227E:
   022284  d7 40 18 00  EXTP    #0x18, #1
   022288  d4 c2 00 22  MOV     R12, [R2+#0x2200]                 ; [62200]
 loc_02228C:
-  02228C  c2 fd 3c e0  MOVBZ   R13, 0xE03C                       ; [6203C]
+  02228C  c2 fd 3c e0  MOVBZ   R13, 0xE03C                       ; [0E03C]
   022290  f0 ea        MOV     R14, R10
   022292  f3 f2 4e 20  MOVB    RL1, 0x204E                       ; [7604E] Подмена параметров диагностики+20
   022296  8a f1 03 40  JB      R1.4, loc_0222A0
@@ -17723,7 +17723,7 @@ loc_022488:
   02248E  f4 e6 de 3f  MOVB    RL7, [R6+#0x3FDE]                 ; [1FFDE]
   022492  d7 40 07 00  EXTP    #0x7, #1
   022496  f4 21 de 3f  MOVB    RL1, [R1+#0x3FDE]                 ; [1FFDE]
-  02249A  23 f6 00 80  SUBB    RL3, 0x8000                       ; [1C000]
+  02249A  23 f6 00 80  SUBB    RL3, 0x8000                       ; [F0000]
   02249E  9d 02        JMPR    cc_UGE, loc_0224A4
   0224A0  07 f6 78 00  ADDB    RL3, #0x78
 loc_0224A4:
@@ -18280,7 +18280,7 @@ sub_022A24:    ; found by: call
   022A44  76 91 00 05  OR      CCM4, #0x0500
   022A48  d1 80        EXTR    #1
   022A4A  6f b2        BSET    CC18IC.6
-  022A4C  66 91 ff 8f  AND     ESFR_F122, #0x8FFF
+  022A4C  66 91 ff 8f  AND     CCM4, #0x8FFF
   022A50  d1 80        EXTR    #1
   022A52  66 b3 3f 00  AND     CC19IC, #0x003F
   022A56  d1 30        ATOMIC  #4
@@ -18291,7 +18291,7 @@ sub_022A24:    ; found by: call
   022A64  76 91 00 50  OR      CCM4, #0x5000
   022A68  d1 80        EXTR    #1
   022A6A  6f b3        BSET    CC19IC.6
-  022A6C  66 92 f8 ff  AND     ESFR_F124, #0xFFF8
+  022A6C  66 92 f8 ff  AND     CCM5, #0xFFF8
   022A70  d1 80        EXTR    #1
   022A72  66 b4 3f 00  AND     CC20IC, #0x003F
   022A76  d1 30        ATOMIC  #4
@@ -18302,7 +18302,7 @@ sub_022A24:    ; found by: call
   022A84  76 92 05 00  OR      CCM5, #0x0005
   022A88  d1 80        EXTR    #1
   022A8A  6f b4        BSET    CC20IC.6
-  022A8C  66 92 8f ff  AND     ESFR_F124, #0xFF8F
+  022A8C  66 92 8f ff  AND     CCM5, #0xFF8F
   022A90  d1 80        EXTR    #1
   022A92  66 b5 3f 00  AND     CC21IC, #0x003F
   022A96  d1 30        ATOMIC  #4
@@ -18366,25 +18366,25 @@ loc_022B1E:
   022B1E  1a 91 00 07  BFLDH   CCM4, #0x07, #0x00
   022B22  d1 80        EXTR    #1
   022B24  66 b2 3f 00  AND     CC18IC, #0x003F
-  022B28  2f ea        BSET    ESFR_F1D4.2
+  022B28  2f ea        BSET    P8.2
   022B2A  fb 88        RETI    
 loc_022B2C:
   022B2C  1a 91 00 70  BFLDH   CCM4, #0x70, #0x00
   022B30  d1 80        EXTR    #1
   022B32  66 b3 3f 00  AND     CC19IC, #0x003F
-  022B36  3f ea        BSET    ESFR_F1D4.3
+  022B36  3f ea        BSET    P8.3
   022B38  fb 88        RETI    
 loc_022B3A:
   022B3A  0a 92 07 00  BFLDL   CCM5, #0x07, #0x00
   022B3E  d1 80        EXTR    #1
   022B40  66 b4 3f 00  AND     CC20IC, #0x003F
-  022B44  4f ea        BSET    ESFR_F1D4.4
+  022B44  4f ea        BSET    P8.4
   022B46  fb 88        RETI    
 loc_022B48:
   022B48  0a 92 70 00  BFLDL   CCM5, #0x70, #0x00
   022B4C  d1 80        EXTR    #1
   022B4E  66 b5 3f 00  AND     CC21IC, #0x003F
-  022B52  5f ea        BSET    ESFR_F1D4.5
+  022B52  5f ea        BSET    P8.5
   022B54  fb 88        RETI    
 
 ;======================================================================
@@ -19149,10 +19149,10 @@ loc_023326:
   023328  9a f1 0d 00  JNB     R1.0, loc_023346
   02332C  d7 40 18 00  EXTP    #0x18, #1
   023330  98 4c        MOV     R4, [R12+]
-  023332  c4 42 6e e2  MOV     [R2+#0xE26E], R4                  ; [6226E]
+  023332  c4 42 6e e2  MOV     [R2+#0xE26E], R4
   023336  d7 40 18 00  EXTP    #0x18, #1
   02333A  98 4c        MOV     R4, [R12+]
-  02333C  c4 42 76 e2  MOV     [R2+#0xE276], R4                  ; [62276]
+  02333C  c4 42 76 e2  MOV     [R2+#0xE276], R4
   023340  90 62        CMPI2   R2, #6
   023342  9d 04        JMPR    cc_UGE, loc_02334C
   023344  0d 01        JMPR    cc_UC, loc_023348
@@ -22240,7 +22240,7 @@ sub_0252CA:    ; found by: gap
 loc_0252CC:
   0252CC  d7 40 18 00  EXTP    #0x18, #1
   0252D0  99 4c        MOVB    RL2, [R12+]
-  0252D2  f2 fd 8a e1  MOV     R13, 0xE18A                       ; [6218A]
+  0252D2  f2 fd 8a e1  MOV     R13, 0xE18A                       ; [0E18A]
   0252D6  b9 4d        MOVB    [R13], RL2
   0252D8  f2 fd 8a e1  MOV     R13, 0xE18A                       ; [0E18A]
   0252DC  08 d1        ADD     R13, #1
@@ -28394,7 +28394,7 @@ loc_028D30:
   028D30  76 99 01 00  OR      PWMCON1, #0x0001
   028D34  d1 80        EXTR    #1
   028D36  f6 f1 38 f0  MOV     PP0, R1
-  028D3A  e6 18 00 00  MOV     PT0, #0x0000
+  028D3A  e6 18 00 00  MOV     PW0, #0x0000
   028D3E  0a e8 01 00  BFLDL   P7, #0x01, #0x00
   028D42  76 98 01 00  OR      PWMCON0, #0x0001
 loc_028D46:
@@ -32444,7 +32444,7 @@ loc_03201E:
   032024  8a 4d 06 40  JB      0xFD9A.4, loc_032034
   032028  d7 40 18 00  EXTP    #0x18, #1
   03202C  f3 f2 1c 04  MOVB    RL1, 0x041C                       ; [6041C]
-  032030  f7 f2 92 a1  MOVB    0xA192, RL1                       ; [62192]
+  032030  f7 f2 92 a1  MOVB    0xA192, RL1                       ; [F2192]
 loc_032034:
   032034  f3 f2 92 a1  MOVB    RL1, 0xA192                       ; [F2192]
   032038  2d 04        JMPR    cc_EQ, loc_032042
@@ -32510,7 +32510,7 @@ loc_0320CA:
   0320E8  f2 fc 9e 00  MOV     R12, 0x009E                       ; [F409E]
   0320EC  d7 40 18 00  EXTP    #0x18, #1
   0320F0  c2 fe 1d 04  MOVBZ   R14, 0x041D                       ; [6041D]
-  0320F4  f6 fc 0e fe  MOV     0xFE0E, R12                       ; [63E0E]
+  0320F4  f6 fc 0e fe  MOV     MDL, R12
   0320F8  5b ee        DIVU    R14
   0320FA  f2 fc 0e fe  MOV     R12, MDL
   0320FE  d7 40 3d 00  EXTP    #0x3D, #1
@@ -33345,7 +33345,7 @@ loc_032912:
   032920  8a 4c 06 c0  JB      0xFD98.12, loc_032930
   032924  d7 40 18 00  EXTP    #0x18, #1
   032928  f3 fe 43 04  MOVB    RL7, 0x0443                       ; [60443]
-  03292C  f7 fe 8e a1  MOVB    0xA18E, RL7                       ; [6218E]
+  03292C  f7 fe 8e a1  MOVB    0xA18E, RL7                       ; [F218E]
 loc_032930:
   032930  f3 fe 8e a1  MOVB    RL7, 0xA18E                       ; [F218E]
   032934  2d 04        JMPR    cc_EQ, loc_03293E
@@ -33774,7 +33774,7 @@ loc_032D28:
 loc_032D2A:
   032D2A  d7 40 3d 00  EXTP    #0x3D, #1
   032D2E  f6 fe 08 01  MOV     0x0108, R14                       ; [F4108]
-  032D32  f6 f8 98 a1  MOV     0xA198, R8                        ; [F6198]
+  032D32  f6 f8 98 a1  MOV     0xA198, R8                        ; [F2198]
   032D36  98 80        MOV     R8, [R0+]
   032D38  db 00        RETS    
 
@@ -35008,7 +35008,7 @@ loc_0338BA:
 loc_0338CC:
   0338CC  d7 40 18 00  EXTP    #0x18, #1
   0338D0  d4 cd bc 3f  MOV     R12, [R13+#0x3FBC]                ; [63FBC]
-  0338D4  74 fc e0 a1  OR      0xA1E0, R12                       ; [621E0]
+  0338D4  74 fc e0 a1  OR      0xA1E0, R12                       ; [F21E0]
   0338D8  f2 fc 10 ff  MOV     R12, PSW
   0338DC  66 fc ff 0f  AND     R12, #0x0FFF
   0338E0  72 fc a8 a1  OR      R12, 0xA1A8                       ; [F21A8]
@@ -35068,7 +35068,7 @@ sub_03396A:    ; found by: gap
   03396C  5c 1e        SHL     R14, #1
   03396E  d7 40 18 00  EXTP    #0x18, #1
   033972  d4 de b0 3f  MOV     R13, [R14+#0x3FB0]                ; [63FB0]
-  033976  f2 ff 10 ff  MOV     R15, 0xFF10                       ; [63F10]
+  033976  f2 ff 10 ff  MOV     R15, PSW
   03397A  66 ff 00 f0  AND     R15, #0xF000
   03397E  d1 00        ATOMIC  #1
   033980  1a 88 f0 f0  BFLDH   PSW, #0xF0, #0xF0
@@ -35094,7 +35094,7 @@ loc_0339B0:
   0339B8  c4 cf d4 a1  MOV     [R15+#0xA1D4], R12
   0339BC  d7 40 18 00  EXTP    #0x18, #1
   0339C0  d4 fe a6 3f  MOV     R15, [R14+#0x3FA6]                ; [63FA6]
-  0339C4  74 ff e0 a1  OR      0xA1E0, R15                       ; [621E0]
+  0339C4  74 ff e0 a1  OR      0xA1E0, R15                       ; [F21E0]
   0339C8  42 fd 9c a1  CMP     R13, 0xA19C                       ; [F219C]
   0339CC  ea 90 fc 39  JMPA    cc_UGE, loc_0339FC
   0339D0  f6 fd 9c a1  MOV     0xA19C, R13                       ; [F219C]
@@ -35139,7 +35139,7 @@ sub_033A12:    ; found by: call
   033A32  c4 cf d4 a1  MOV     [R15+#0xA1D4], R12
   033A36  d7 40 18 00  EXTP    #0x18, #1
   033A3A  d4 fe a6 3f  MOV     R15, [R14+#0x3FA6]                ; [63FA6]
-  033A3E  74 ff e0 a1  OR      0xA1E0, R15                       ; [621E0]
+  033A3E  74 ff e0 a1  OR      0xA1E0, R15                       ; [F21E0]
   033A42  42 fd 9c a1  CMP     R13, 0xA19C                       ; [F219C]
   033A46  9d 09        JMPR    cc_UGE, loc_033A5A
   033A48  f6 fd 9c a1  MOV     0xA19C, R13                       ; [F219C]
@@ -35224,7 +35224,7 @@ sub_033AB6:    ; found by: gap
   033B18  c4 cf d4 a1  MOV     [R15+#0xA1D4], R12
   033B1C  d7 40 18 00  EXTP    #0x18, #1
   033B20  d4 ce a6 3f  MOV     R12, [R14+#0x3FA6]                ; [63FA6]
-  033B24  74 fc e0 a1  OR      0xA1E0, R12                       ; [621E0]
+  033B24  74 fc e0 a1  OR      0xA1E0, R12                       ; [F21E0]
 loc_033B28:
   033B28  da 03 9e 3d  CALLS   sub_033D9E
   033B2C  d1 00        ATOMIC  #1
@@ -36007,10 +36007,10 @@ sub_0341B6:    ; found by: call
   0341BA  d1 90        EXTR    #2
   0341BC  e6 28 78 ec  MOV     T7, #0xEC78
   0341C0  e6 2a 78 ec  MOV     T7REL, #0xEC78
-  0341C4  e6 90 40 00  MOV     ESFR_F120, #0x0040
+  0341C4  e6 90 40 00  MOV     T78CON, #0x0040
   0341C8  d1 80        EXTR    #1
   0341CA  e6 bd 45 00  MOV     T7IC, #0x0045
-  0341CE  f6 8e a4 a1  MOV     0xA1A4, ESFR_F11C                 ; [F21A4]
+  0341CE  f6 8e a4 a1  MOV     0xA1A4, ZEROS                     ; [F21A4]
   0341D2  db 00        RETS    
 
 ;======================================================================
@@ -36255,7 +36255,7 @@ sub_034422:    ; found by: call
   03442A  e6 d9 37 40  MOV     SSCCON, #0x4037
   03442E  d1 80        EXTR    #1
   034430  e6 5a 09 00  MOV     SSCBR, #0x0009
-  034434  8e e3        BCLR    ODP3.8
+  034434  8e e3        BCLR    DP3.8
   034436  9f e3        BSET    DP3.9
   034438  df e3        BSET    DP3.13
   03443A  df e2        BSET    P3.13
@@ -36267,14 +36267,14 @@ sub_034422:    ; found by: call
   034446  d1 80        EXTR    #1
   034448  e6 58 06 00  MOV     SSCTB, #0x0006
 loc_03444C:
-  03444C  9a ba fe 70  JNB     CC26IC.7, loc_03444C
+  03444C  9a ba fe 70  JNB     SSCRIC.7, loc_03444C
   034450  4f e4        BSET    P4.4
   034452  4e e4        BCLR    P4.4
   034454  7e ba        BCLR    SSCRIC.7
   034456  d1 80        EXTR    #1
   034458  e6 58 02 00  MOV     SSCTB, #0x0002
 loc_03445C:
-  03445C  9a ba fe 70  JNB     CC26IC.7, loc_03445C
+  03445C  9a ba fe 70  JNB     SSCRIC.7, loc_03445C
   034460  7e ba        BCLR    SSCRIC.7
   034462  f0 fc        MOV     R15, R12
   034464  7c 8f        SHR     R15, #8
@@ -36315,7 +36315,7 @@ sub_0344A8:    ; found by: call
   0344B0  e6 d9 37 40  MOV     SSCCON, #0x4037
   0344B4  d1 80        EXTR    #1
   0344B6  e6 5a 09 00  MOV     SSCBR, #0x0009
-  0344BA  8e e3        BCLR    ODP3.8
+  0344BA  8e e3        BCLR    DP3.8
   0344BC  9f e3        BSET    DP3.9
   0344BE  df e3        BSET    DP3.13
   0344C0  df e2        BSET    P3.13
@@ -36327,7 +36327,7 @@ sub_0344A8:    ; found by: call
   0344CC  d1 80        EXTR    #1
   0344CE  e6 58 03 00  MOV     SSCTB, #0x0003
 loc_0344D2:
-  0344D2  9a ba fe 70  JNB     CC26IC.7, loc_0344D2
+  0344D2  9a ba fe 70  JNB     SSCRIC.7, loc_0344D2
   0344D6  7e ba        BCLR    SSCRIC.7
   0344D8  f0 fc        MOV     R15, R12
   0344DA  7c 8f        SHR     R15, #8
@@ -36349,7 +36349,7 @@ loc_0344F2:
   034500  d1 80        EXTR    #1
   034502  e6 58 00 00  MOV     SSCTB, #0x0000
 loc_034506:
-  034506  9a ba fe 70  JNB     CC26IC.7, loc_034506
+  034506  9a ba fe 70  JNB     SSCRIC.7, loc_034506
   03450A  f3 f2 b2 f0  MOVB    RL1, SSCRB
   03450E  f0 ce        MOV     R12, R14
   034510  08 e1        ADD     R14, #1
@@ -37756,10 +37756,10 @@ loc_035420:
   035428  8d b9        JMPR    cc_ULT, loc_03539C
   03542A  d7 40 0e 00  EXTP    #0xE, #1
   03542E  f2 f9 08 9b  MOV     R9, 0x9B08                        ; [39B08]
-  035432  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [38004]
+  035432  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [74004]
   035436  d7 40 3c 00  EXTP    #0x3C, #1
   03543A  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  03543E  d4 70 04 00  MOV     R7, [R0+#0x0004]                  ; [F0004]
+  03543E  d4 70 04 00  MOV     R7, [R0+#0x0004]                  ; [74004]
   035442  7c 87        SHR     R7, #8
   035444  c4 70 24 00  MOV     [R0+#0x0024], R7                  ; [74024]
   035448  d7 40 3c 00  EXTP    #0x3C, #1
@@ -37878,10 +37878,10 @@ loc_035582:
   03558A  8d b9        JMPR    cc_ULT, loc_0354FE
   03558C  d7 40 0e 00  EXTP    #0xE, #1
   035590  f2 f9 0a 9b  MOV     R9, 0x9B0A                        ; [39B0A]
-  035594  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [38004]
+  035594  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [74004]
   035598  d7 40 3c 00  EXTP    #0x3C, #1
   03559C  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  0355A0  f4 e0 24 00  MOVB    RL7, [R0+#0x0024]                 ; [F0024]
+  0355A0  f4 e0 24 00  MOVB    RL7, [R0+#0x0024]                 ; [74024]
   0355A4  d7 40 3c 00  EXTP    #0x3C, #1
   0355A8  f7 fe 3b 0f  MOVB    0x0F3B, RL7                       ; [F0F3B]
   0355AC  f0 c9        MOV     R12, R9
@@ -37998,10 +37998,10 @@ loc_0356DE:
   0356E6  8d b9        JMPR    cc_ULT, loc_03565A
   0356E8  d7 40 0e 00  EXTP    #0xE, #1
   0356EC  f2 f9 0c 9b  MOV     R9, 0x9B0C                        ; [39B0C]
-  0356F0  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [38004]
+  0356F0  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [74004]
   0356F4  d7 40 3c 00  EXTP    #0x3C, #1
   0356F8  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  0356FC  f4 e0 24 00  MOVB    RL7, [R0+#0x0024]                 ; [F0024]
+  0356FC  f4 e0 24 00  MOVB    RL7, [R0+#0x0024]                 ; [74024]
   035700  d7 40 3c 00  EXTP    #0x3C, #1
   035704  f7 fe 3b 0f  MOVB    0x0F3B, RL7                       ; [F0F3B]
   035708  f0 c9        MOV     R12, R9
@@ -39036,7 +39036,7 @@ loc_036238:
   03624A  d7 40 3d 00  EXTP    #0x3D, #1
   03624E  f7 fe d0 0a  MOVB    0x0AD0, RL7                       ; [F4AD0]
 loc_036252:
-  036252  f2 f9 08 a2  MOV     R9, 0xA208                        ; [F6208]
+  036252  f2 f9 08 a2  MOV     R9, 0xA208                        ; [F2208]
   036256  f2 f6 0a a2  MOV     R6, 0xA20A                        ; [F220A]
   03625A  dc 46        EXTP    R6, #1
   03625C  f4 e9 0c 00  MOVB    RL7, [R9+#0x000C]                 ; [7400C]
@@ -39251,10 +39251,10 @@ loc_0364AC:
   0364B4  8d b9        JMPR    cc_ULT, loc_036428
   0364B6  d7 40 0e 00  EXTP    #0xE, #1
   0364BA  f2 f9 08 9b  MOV     R9, 0x9B08                        ; [39B08]
-  0364BE  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [38004]
+  0364BE  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [74004]
   0364C2  d7 40 3c 00  EXTP    #0x3C, #1
   0364C6  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  0364CA  d4 70 04 00  MOV     R7, [R0+#0x0004]                  ; [F0004]
+  0364CA  d4 70 04 00  MOV     R7, [R0+#0x0004]                  ; [74004]
   0364CE  7c 87        SHR     R7, #8
   0364D0  c4 70 28 00  MOV     [R0+#0x0028], R7                  ; [74028]
   0364D4  d7 40 3c 00  EXTP    #0x3C, #1
@@ -39378,10 +39378,10 @@ loc_036622:
   03662A  8d b9        JMPR    cc_ULT, loc_03659E
   03662C  d7 40 0e 00  EXTP    #0xE, #1
   036630  f2 f9 0a 9b  MOV     R9, 0x9B0A                        ; [39B0A]
-  036634  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [38004]
+  036634  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [74004]
   036638  d7 40 3c 00  EXTP    #0x3C, #1
   03663C  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  036640  f4 e0 28 00  MOVB    RL7, [R0+#0x0028]                 ; [F0028]
+  036640  f4 e0 28 00  MOVB    RL7, [R0+#0x0028]                 ; [74028]
   036644  d7 40 3c 00  EXTP    #0x3C, #1
   036648  f7 fe 3b 0f  MOVB    0x0F3B, RL7                       ; [F0F3B]
   03664C  f3 f2 06 a2  MOVB    RL1, 0xA206                       ; [F2206]
@@ -39501,10 +39501,10 @@ loc_03678A:
   036792  8d b9        JMPR    cc_ULT, loc_036706
   036794  d7 40 0e 00  EXTP    #0xE, #1
   036798  f2 f9 0c 9b  MOV     R9, 0x9B0C                        ; [39B0C]
-  03679C  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [38004]
+  03679C  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [74004]
   0367A0  d7 40 3c 00  EXTP    #0x3C, #1
   0367A4  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  0367A8  f4 e0 28 00  MOVB    RL7, [R0+#0x0028]                 ; [F0028]
+  0367A8  f4 e0 28 00  MOVB    RL7, [R0+#0x0028]                 ; [74028]
   0367AC  d7 40 3c 00  EXTP    #0x3C, #1
   0367B0  f7 fe 3b 0f  MOVB    0x0F3B, RL7                       ; [F0F3B]
   0367B4  f3 f2 06 a2  MOVB    RL1, 0xA206                       ; [F2206]
@@ -39614,10 +39614,10 @@ loc_0368E0:
   0368E8  8d d3        JMPR    cc_ULT, loc_036890
   0368EA  d7 40 0e 00  EXTP    #0xE, #1
   0368EE  f2 f9 0a 9b  MOV     R9, 0x9B0A                        ; [39B0A]
-  0368F2  f4 c0 18 00  MOVB    RL6, [R0+#0x0018]                 ; [38018]
+  0368F2  f4 c0 18 00  MOVB    RL6, [R0+#0x0018]                 ; [74018]
   0368F6  d7 40 3c 00  EXTP    #0x3C, #1
   0368FA  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  0368FE  d4 70 18 00  MOV     R7, [R0+#0x0018]                  ; [F0018]
+  0368FE  d4 70 18 00  MOV     R7, [R0+#0x0018]                  ; [74018]
   036902  7c 87        SHR     R7, #8
   036904  d7 40 3c 00  EXTP    #0x3C, #1
   036908  f7 fe 3b 0f  MOVB    0x0F3B, RL7                       ; [F0F3B]
@@ -39725,10 +39725,10 @@ loc_036A2E:
   036A36  8d d3        JMPR    cc_ULT, loc_0369DE
   036A38  d7 40 0e 00  EXTP    #0xE, #1
   036A3C  f2 f9 0c 9b  MOV     R9, 0x9B0C                        ; [39B0C]
-  036A40  f4 c0 16 00  MOVB    RL6, [R0+#0x0016]                 ; [38016]
+  036A40  f4 c0 16 00  MOVB    RL6, [R0+#0x0016]                 ; [74016]
   036A44  d7 40 3c 00  EXTP    #0x3C, #1
   036A48  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  036A4C  d4 70 16 00  MOV     R7, [R0+#0x0016]                  ; [F0016]
+  036A4C  d4 70 16 00  MOV     R7, [R0+#0x0016]                  ; [74016]
   036A50  7c 87        SHR     R7, #8
   036A52  d7 40 3c 00  EXTP    #0x3C, #1
   036A56  f7 fe 3b 0f  MOVB    0x0F3B, RL7                       ; [F0F3B]
@@ -39941,10 +39941,10 @@ loc_036C6E:
   036C76  8d b9        JMPR    cc_ULT, loc_036BEA
   036C78  d7 40 0e 00  EXTP    #0xE, #1
   036C7C  f2 f9 22 9b  MOV     R9, 0x9B22                        ; [39B22]
-  036C80  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [38004]
+  036C80  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [74004]
   036C84  d7 40 3c 00  EXTP    #0x3C, #1
   036C88  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  036C8C  d4 70 04 00  MOV     R7, [R0+#0x0004]                  ; [F0004]
+  036C8C  d4 70 04 00  MOV     R7, [R0+#0x0004]                  ; [74004]
   036C90  7c 87        SHR     R7, #8
   036C92  c4 70 26 00  MOV     [R0+#0x0026], R7                  ; [74026]
   036C96  d7 40 3c 00  EXTP    #0x3C, #1
@@ -40066,10 +40066,10 @@ loc_036DDC:
   036DE4  8d b9        JMPR    cc_ULT, loc_036D58
   036DE6  d7 40 0e 00  EXTP    #0xE, #1
   036DEA  f2 f9 24 9b  MOV     R9, 0x9B24                        ; [39B24]
-  036DEE  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [38004]
+  036DEE  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [74004]
   036DF2  d7 40 3c 00  EXTP    #0x3C, #1
   036DF6  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  036DFA  f4 e0 26 00  MOVB    RL7, [R0+#0x0026]                 ; [F0026]
+  036DFA  f4 e0 26 00  MOVB    RL7, [R0+#0x0026]                 ; [74026]
   036DFE  d7 40 3c 00  EXTP    #0x3C, #1
   036E02  f7 fe 3b 0f  MOVB    0x0F3B, RL7                       ; [F0F3B]
   036E06  f3 f2 05 a2  MOVB    RL1, 0xA205                       ; [F2205]
@@ -40189,10 +40189,10 @@ loc_036F44:
   036F4C  8d b9        JMPR    cc_ULT, loc_036EC0
   036F4E  d7 40 0e 00  EXTP    #0xE, #1
   036F52  f2 f9 26 9b  MOV     R9, 0x9B26                        ; [39B26]
-  036F56  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [38004]
+  036F56  f4 c0 04 00  MOVB    RL6, [R0+#0x0004]                 ; [74004]
   036F5A  d7 40 3c 00  EXTP    #0x3C, #1
   036F5E  f7 fc 3a 0f  MOVB    0x0F3A, RL6                       ; [F0F3A]
-  036F62  f4 e0 26 00  MOVB    RL7, [R0+#0x0026]                 ; [F0026]
+  036F62  f4 e0 26 00  MOVB    RL7, [R0+#0x0026]                 ; [74026]
   036F66  d7 40 3c 00  EXTP    #0x3C, #1
   036F6A  f7 fe 3b 0f  MOVB    0x0F3B, RL7                       ; [F0F3B]
   036F6E  f3 f2 05 a2  MOVB    RL1, 0xA205                       ; [F2205]
@@ -41367,7 +41367,7 @@ loc_037C1E:
   037C2A  3d 39        JMPR    cc_NE, loc_037C9E
   037C2C  d7 40 0e 00  EXTP    #0xE, #1
   037C30  f2 fc d0 1b  MOV     R12, 0x1BD0                       ; [39BD0]
-  037C34  f6 fc 12 a2  MOV     0xA212, R12                       ; [3A212]
+  037C34  f6 fc 12 a2  MOV     0xA212, R12                       ; [F2212]
   037C38  26 f0 08 00  SUB     R0, #0x0008
   037C3C  7c 4c        SHR     R12, #4
   037C3E  f0 4c        MOV     R4, R12
@@ -41453,7 +41453,7 @@ loc_037D36:
   037D42  3d 39        JMPR    cc_NE, loc_037DB6
   037D44  d7 40 0e 00  EXTP    #0xE, #1
   037D48  f2 fc ce 1b  MOV     R12, 0x1BCE                       ; [39BCE]
-  037D4C  f6 fc 12 a2  MOV     0xA212, R12                       ; [3A212]
+  037D4C  f6 fc 12 a2  MOV     0xA212, R12                       ; [F2212]
   037D50  26 f0 08 00  SUB     R0, #0x0008
   037D54  7c 4c        SHR     R12, #4
   037D56  f0 4c        MOV     R4, R12
@@ -41541,7 +41541,7 @@ loc_037E4E:
   037E5A  3d 39        JMPR    cc_NE, loc_037ECE
   037E5C  d7 40 0e 00  EXTP    #0xE, #1
   037E60  f2 fc cc 1b  MOV     R12, 0x1BCC                       ; [39BCC]
-  037E64  f6 fc 12 a2  MOV     0xA212, R12                       ; [3A212]
+  037E64  f6 fc 12 a2  MOV     0xA212, R12                       ; [F2212]
   037E68  26 f0 08 00  SUB     R0, #0x0008
   037E6C  7c 4c        SHR     R12, #4
   037E6E  f0 4c        MOV     R4, R12
@@ -41627,7 +41627,7 @@ loc_037F66:
   037F72  3d 1e        JMPR    cc_NE, loc_037FB0
   037F74  d7 40 0e 00  EXTP    #0xE, #1
   037F78  f2 fc d6 1b  MOV     R12, 0x1BD6                       ; [39BD6]
-  037F7C  f6 fc 12 a2  MOV     0xA212, R12                       ; [3A212]
+  037F7C  f6 fc 12 a2  MOV     0xA212, R12                       ; [F2212]
   037F80  f3 f4 14 a2  MOVB    RL2, 0xA214                       ; [F2214]
   037F84  d7 40 3c 00  EXTP    #0x3C, #1
   037F88  f7 f4 3a 0f  MOVB    0x0F3A, RL2                       ; [F0F3A]
@@ -41649,7 +41649,7 @@ loc_037FB0:
   037FBC  3d 1f        JMPR    cc_NE, loc_037FFC
   037FBE  d7 40 0e 00  EXTP    #0xE, #1
   037FC2  f2 fc d4 1b  MOV     R12, 0x1BD4                       ; [39BD4]
-  037FC6  f6 fc 12 a2  MOV     0xA212, R12                       ; [3A212]
+  037FC6  f6 fc 12 a2  MOV     0xA212, R12                       ; [F2212]
   037FCA  f3 f4 14 a2  MOVB    RL2, 0xA214                       ; [F2214]
   037FCE  d7 40 3c 00  EXTP    #0x3C, #1
   037FD2  f7 f4 3a 0f  MOVB    0x0F3A, RL2                       ; [F0F3A]
@@ -41677,7 +41677,7 @@ sub_038004:    ; found by: gap
   038008  3d 1f        JMPR    cc_NE, loc_038048
   03800A  d7 40 0e 00  EXTP    #0xE, #1
   03800E  f2 fc d2 1b  MOV     R12, 0x1BD2                       ; [39BD2]
-  038012  f6 fc 12 a2  MOV     0xA212, R12                       ; [3A212]
+  038012  f6 fc 12 a2  MOV     0xA212, R12                       ; [F2212]
   038016  f3 f4 14 a2  MOVB    RL2, 0xA214                       ; [F2214]
   03801A  d7 40 3c 00  EXTP    #0x3C, #1
   03801E  f7 f4 3a 0f  MOVB    0x0F3A, RL2                       ; [F0F3A]
@@ -41772,7 +41772,7 @@ loc_0380E4:
   038104  ea 30 54 82  JMPA    cc_NE, loc_038254
   038108  d7 40 0e 00  EXTP    #0xE, #1
   03810C  f2 fc d0 1b  MOV     R12, 0x1BD0                       ; [39BD0]
-  038110  f6 fc 12 a2  MOV     0xA212, R12                       ; [3A212]
+  038110  f6 fc 12 a2  MOV     0xA212, R12                       ; [F2212]
   038114  26 f0 08 00  SUB     R0, #0x0008
   038118  7c 4c        SHR     R12, #4
   03811A  f0 4c        MOV     R4, R12
@@ -41879,7 +41879,7 @@ loc_038258:
   038262  ea 30 b2 83  JMPA    cc_NE, loc_0383B2
   038266  d7 40 0e 00  EXTP    #0xE, #1
   03826A  f2 fc ce 1b  MOV     R12, 0x1BCE                       ; [39BCE]
-  03826E  f6 fc 12 a2  MOV     0xA212, R12                       ; [3A212]
+  03826E  f6 fc 12 a2  MOV     0xA212, R12                       ; [F2212]
   038272  26 f0 08 00  SUB     R0, #0x0008
   038276  7c 4c        SHR     R12, #4
   038278  f0 4c        MOV     R4, R12
@@ -41985,7 +41985,7 @@ loc_0383B4:
   0383BE  ea 30 0e 85  JMPA    cc_NE, loc_03850E
   0383C2  d7 40 0e 00  EXTP    #0xE, #1
   0383C6  f2 fc cc 1b  MOV     R12, 0x1BCC                       ; [39BCC]
-  0383CA  f6 fc 12 a2  MOV     0xA212, R12                       ; [3A212]
+  0383CA  f6 fc 12 a2  MOV     0xA212, R12                       ; [F2212]
   0383CE  26 f0 08 00  SUB     R0, #0x0008
   0383D2  7c 4c        SHR     R12, #4
   0383D4  f0 4c        MOV     R4, R12
@@ -42118,12 +42118,12 @@ loc_03854C:
 loc_038556:
   038556  d7 40 0e 00  EXTP    #0xE, #1
   03855A  f2 f8 b4 9b  MOV     R8, 0x9BB4                        ; [39BB4]
-  03855E  c4 80 0a 00  MOV     [R0+#0x000A], R8                  ; [3800A]
+  03855E  c4 80 0a 00  MOV     [R0+#0x000A], R8                  ; [7400A]
   038562  d7 40 0e 00  EXTP    #0xE, #1
   038566  f2 f6 b6 9b  MOV     R6, 0x9BB6                        ; [39BB6]
   03856A  d7 40 0e 00  EXTP    #0xE, #1
   03856E  f2 f9 ae 9b  MOV     R9, 0x9BAE                        ; [39BAE]
-  038572  c4 90 06 00  MOV     [R0+#0x0006], R9                  ; [38006]
+  038572  c4 90 06 00  MOV     [R0+#0x0006], R9                  ; [74006]
   038576  f4 e0 22 00  MOVB    RL7, [R0+#0x0022]                 ; [74022]
   03857A  49 e2        CMPB    RL7, #2
   03857C  ea 30 32 87  JMPA    cc_NE, loc_038732
@@ -42484,12 +42484,12 @@ loc_0388FE:
   038906  f4 e0 02 00  MOVB    RL7, [R0+#0x0002]                 ; [74002]
   03890A  d7 40 3c 00  EXTP    #0x3C, #1
   03890E  f7 fe 3a 0f  MOVB    0x0F3A, RL7                       ; [F0F3A]
-  038912  d4 90 02 00  MOV     R9, [R0+#0x0002]                  ; [F0002]
+  038912  d4 90 02 00  MOV     R9, [R0+#0x0002]                  ; [74002]
   038916  7c 89        SHR     R9, #8
   038918  f0 19        MOV     R1, R9
   03891A  d7 40 3c 00  EXTP    #0x3C, #1
   03891E  f7 f2 3b 0f  MOVB    0x0F3B, RL1                       ; [F0F3B]
-  038922  d4 c0 0a 00  MOV     R12, [R0+#0x000A]                 ; [F000A]
+  038922  d4 c0 0a 00  MOV     R12, [R0+#0x000A]                 ; [7400A]
   038926  e0 2d        MOV     R13, #2
   038928  da 03 22 44  CALLS   sub_034422
   03892C  e0 5c        MOV     R12, #5
@@ -44506,14 +44506,14 @@ loc_039FF0:
   03A026  c0 e9        MOVBZ   R14, RH4
   03A028  d7 40 1a 00  EXTP    #0x1A, #1
   03A02C  f4 29 62 20  MOVB    RL1, [R9+#0x2062]                 ; [6A062]
-  03A030  f7 f2 26 a2  MOVB    0xA226, RL1                       ; [6A226]
+  03A030  f7 f2 26 a2  MOVB    0xA226, RL1                       ; [F2226]
 loc_03A034:
   03A034  c0 e9        MOVBZ   R14, RH4
   03A036  5c 19        SHL     R9, #1
   03A038  c4 90 10 00  MOV     [R0+#0x0010], R9                  ; [74010]
   03A03C  d7 40 3c 00  EXTP    #0x3C, #1
   03A040  d4 79 68 00  MOV     R7, [R9+#0x0068]                  ; [F0068]
-  03A044  c4 70 06 00  MOV     [R0+#0x0006], R7                  ; [F0006]
+  03A044  c4 70 06 00  MOV     [R0+#0x0006], R7                  ; [74006]
   03A048  d7 40 3c 00  EXTP    #0x3C, #1
   03A04C  f2 fc 26 04  MOV     R12, 0x0426                       ; [F0426]
   03A050  9a fc 02 70  JNB     R12.7, loc_03A058
@@ -45145,7 +45145,7 @@ loc_03A6D4:
   03A6E4  d7 40 3c 00  EXTP    #0x3C, #1
   03A6E8  f6 f8 26 04  MOV     0x0426, R8                        ; [F0426]
 loc_03A6EC:
-  03A6EC  d4 80 08 00  MOV     R8, [R0+#0x0008]                  ; [F0008]
+  03A6EC  d4 80 08 00  MOV     R8, [R0+#0x0008]                  ; [74008]
   03A6F0  d4 60 0a 00  MOV     R6, [R0+#0x000A]                  ; [7400A]
   03A6F4  f6 f8 2c a2  MOV     0xA22C, R8                        ; [F222C]
   03A6F8  f6 f6 2e a2  MOV     0xA22E, R6                        ; [F222E]
@@ -45519,7 +45519,7 @@ sub_03AA26:    ; found by: gap
   03AA2A  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03AA2E  d1 80        EXTR    #1
   03AA30  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03AA34  8e e3        BCLR    ODP3.8
+  03AA34  8e e3        BCLR    DP3.8
   03AA36  9f e3        BSET    DP3.9
   03AA38  df e3        BSET    DP3.13
   03AA3A  df e2        BSET    P3.13
@@ -45531,7 +45531,7 @@ sub_03AA26:    ; found by: gap
   03AA46  d1 80        EXTR    #1
   03AA48  e6 58 00 00  MOV     SSCTB, #0x0000
 loc_03AA4C:
-  03AA4C  9a ba fe 70  JNB     CC26IC.7, loc_03AA4C
+  03AA4C  9a ba fe 70  JNB     SSCRIC.7, loc_03AA4C
   03AA50  ea 00 d6 ab  JMPA    cc_UC, loc_03ABD6
 
 ;======================================================================
@@ -45541,7 +45541,7 @@ sub_03AA54:    ; found by: gap
   03AA58  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03AA5C  d1 80        EXTR    #1
   03AA5E  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03AA62  8e e3        BCLR    ODP3.8
+  03AA62  8e e3        BCLR    DP3.8
   03AA64  9f e3        BSET    DP3.9
   03AA66  df e3        BSET    DP3.13
   03AA68  df e2        BSET    P3.13
@@ -45563,7 +45563,7 @@ sub_03AA84:    ; found by: gap
   03AA88  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03AA8C  d1 80        EXTR    #1
   03AA8E  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03AA92  8e e3        BCLR    ODP3.8
+  03AA92  8e e3        BCLR    DP3.8
   03AA94  9f e3        BSET    DP3.9
   03AA96  df e3        BSET    DP3.13
   03AA98  df e2        BSET    P3.13
@@ -45594,7 +45594,7 @@ sub_03AACC:    ; found by: gap
   03AAD0  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03AAD4  d1 80        EXTR    #1
   03AAD6  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03AADA  8e e3        BCLR    ODP3.8
+  03AADA  8e e3        BCLR    DP3.8
   03AADC  9f e3        BSET    DP3.9
   03AADE  df e3        BSET    DP3.13
   03AAE0  df e2        BSET    P3.13
@@ -45616,7 +45616,7 @@ sub_03AAFA:    ; found by: gap
   03AAFE  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03AB02  d1 80        EXTR    #1
   03AB04  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03AB08  8e e3        BCLR    ODP3.8
+  03AB08  8e e3        BCLR    DP3.8
   03AB0A  9f e3        BSET    DP3.9
   03AB0C  df e3        BSET    DP3.13
   03AB0E  df e2        BSET    P3.13
@@ -45642,7 +45642,7 @@ sub_03AB2E:    ; found by: gap
   03AB32  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03AB36  d1 80        EXTR    #1
   03AB38  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03AB3C  8e e3        BCLR    ODP3.8
+  03AB3C  8e e3        BCLR    DP3.8
   03AB3E  9f e3        BSET    DP3.9
   03AB40  df e3        BSET    DP3.13
   03AB42  df e2        BSET    P3.13
@@ -45685,7 +45685,7 @@ loc_03AB80:
   03AB86  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03AB8A  d1 80        EXTR    #1
   03AB8C  e6 5a 13 00  MOV     SSCBR, #0x0013
-  03AB90  8e e3        BCLR    ODP3.8
+  03AB90  8e e3        BCLR    DP3.8
   03AB92  9f e3        BSET    DP3.9
   03AB94  df e3        BSET    DP3.13
   03AB96  df e2        BSET    P3.13
@@ -45752,7 +45752,7 @@ loc_03AC10:
   03AC14  e6 d9 3f 40  MOV     SSCCON, #0x403F
   03AC18  d1 80        EXTR    #1
   03AC1A  e6 5a 27 00  MOV     SSCBR, #0x0027
-  03AC1E  8e e3        BCLR    ODP3.8
+  03AC1E  8e e3        BCLR    DP3.8
   03AC20  9f e3        BSET    DP3.9
   03AC22  df e3        BSET    DP3.13
   03AC24  df e2        BSET    P3.13
@@ -45880,7 +45880,7 @@ loc_03AD5A:
   03AD5E  e6 d9 3f 40  MOV     SSCCON, #0x403F
   03AD62  d1 80        EXTR    #1
   03AD64  e6 5a 27 00  MOV     SSCBR, #0x0027
-  03AD68  8e e3        BCLR    ODP3.8
+  03AD68  8e e3        BCLR    DP3.8
   03AD6A  9f e3        BSET    DP3.9
   03AD6C  df e3        BSET    DP3.13
   03AD6E  df e2        BSET    P3.13
@@ -46139,7 +46139,7 @@ sub_03AFAE:    ; found by: gap
   03AFB2  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03AFB6  d1 80        EXTR    #1
   03AFB8  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03AFBC  8e e3        BCLR    ODP3.8
+  03AFBC  8e e3        BCLR    DP3.8
   03AFBE  9f e3        BSET    DP3.9
   03AFC0  df e3        BSET    DP3.13
   03AFC2  df e2        BSET    P3.13
@@ -46151,7 +46151,7 @@ sub_03AFAE:    ; found by: gap
   03AFCE  d1 80        EXTR    #1
   03AFD0  e6 58 00 00  MOV     SSCTB, #0x0000
 loc_03AFD4:
-  03AFD4  9a ba fe 70  JNB     CC26IC.7, loc_03AFD4
+  03AFD4  9a ba fe 70  JNB     SSCRIC.7, loc_03AFD4
   03AFD8  0d 16        JMPR    cc_UC, loc_03B006
 
 ;======================================================================
@@ -46161,7 +46161,7 @@ sub_03AFDA:    ; found by: gap
   03AFDE  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03AFE2  d1 80        EXTR    #1
   03AFE4  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03AFE8  8e e3        BCLR    ODP3.8
+  03AFE8  8e e3        BCLR    DP3.8
   03AFEA  9f e3        BSET    DP3.9
   03AFEC  df e3        BSET    DP3.13
   03AFEE  df e2        BSET    P3.13
@@ -46185,7 +46185,7 @@ sub_03B00C:    ; found by: gap
   03B010  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03B014  d1 80        EXTR    #1
   03B016  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03B01A  8e e3        BCLR    ODP3.8
+  03B01A  8e e3        BCLR    DP3.8
   03B01C  9f e3        BSET    DP3.9
   03B01E  df e3        BSET    DP3.13
   03B020  df e2        BSET    P3.13
@@ -46218,7 +46218,7 @@ sub_03B056:    ; found by: gap
   03B05A  e6 d9 1f 40  MOV     SSCCON, #0x401F
   03B05E  d1 80        EXTR    #1
   03B060  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03B064  8e e3        BCLR    ODP3.8
+  03B064  8e e3        BCLR    DP3.8
   03B066  9f e3        BSET    DP3.9
   03B068  df e3        BSET    DP3.13
   03B06A  df e2        BSET    P3.13
@@ -46244,7 +46244,7 @@ sub_03B07E:    ; found by: gap
   03B090  e6 d9 17 40  MOV     SSCCON, #0x4017
   03B094  d1 80        EXTR    #1
   03B096  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03B09A  8e e3        BCLR    ODP3.8
+  03B09A  8e e3        BCLR    DP3.8
   03B09C  9f e3        BSET    DP3.9
   03B09E  df e3        BSET    DP3.13
   03B0A0  df e2        BSET    P3.13
@@ -46256,7 +46256,7 @@ sub_03B07E:    ; found by: gap
   03B0AC  d1 80        EXTR    #1
   03B0AE  e6 58 00 00  MOV     SSCTB, #0x0000
 loc_03B0B2:
-  03B0B2  9a ba fe 70  JNB     CC26IC.7, loc_03B0B2
+  03B0B2  9a ba fe 70  JNB     SSCRIC.7, loc_03B0B2
   03B0B6  f3 f2 b2 f0  MOVB    RL1, SSCRB
   03B0BA  3f e6        BSET    P6.3
   03B0BC  0d 0e        JMPR    cc_UC, loc_03B0DA
@@ -46266,7 +46266,7 @@ loc_03B0BE:
   03B0C2  e6 d9 17 40  MOV     SSCCON, #0x4017
   03B0C6  d1 80        EXTR    #1
   03B0C8  e6 5a 04 00  MOV     SSCBR, #0x0004
-  03B0CC  8e e3        BCLR    ODP3.8
+  03B0CC  8e e3        BCLR    DP3.8
   03B0CE  9f e3        BSET    DP3.9
   03B0D0  df e3        BSET    DP3.13
   03B0D2  df e2        BSET    P3.13
@@ -46477,7 +46477,7 @@ loc_03B2FA:
   03B2FA  d7 40 18 00  EXTP    #0x18, #1
   03B2FE  f2 f7 38 05  MOV     R7, 0x0538                        ; [60538]
 loc_03B302:
-  03B302  f2 f9 46 a2  MOV     R9, 0xA246                        ; [62246]
+  03B302  f2 f9 46 a2  MOV     R9, 0xA246                        ; [F2246]
 loc_03B306:
   03B306  9a f9 02 70  JNB     R9.7, loc_03B30E
   03B30A  df 4e        BSET    0xFD9C.13
@@ -47064,13 +47064,13 @@ sub_03B854:    ; found by: gap
   03B8F8  f7 f2 a4 02  MOVB    0x02A4, RL1                       ; [F42A4]
   03B8FC  d7 40 3d 00  EXTP    #0x3D, #1
   03B900  24 8f 90 02  SUB     0x0290, ONES                      ; [F4290]
-  03B904  f2 fc 5c a2  MOV     R12, 0xA25C                       ; [F625C]
+  03B904  f2 fc 5c a2  MOV     R12, 0xA25C                       ; [F225C]
   03B908  e0 0d        MOV     R13, #0
   03B90A  04 fc 4a a2  ADD     0xA24A, R12                       ; [F224A]
   03B90E  14 fd 4c a2  ADDC    0xA24C, R13                       ; [F224C]
   03B912  d7 40 3d 00  EXTP    #0x3D, #1
   03B916  f2 ff 90 02  MOV     R15, 0x0290                       ; [F4290]
-  03B91A  f2 06 4c a2  MOV     MDH, 0xA24C                       ; [F624C]
+  03B91A  f2 06 4c a2  MOV     MDH, 0xA24C                       ; [F224C]
   03B91E  f2 07 4a a2  MOV     MDL, 0xA24A                       ; [F224A]
   03B922  7b ff        DIVLU   R15
   03B924  f2 fe 0e fe  MOV     R14, MDL
@@ -47078,7 +47078,7 @@ sub_03B854:    ; found by: gap
   03B92C  f6 fe 8e 02  MOV     0x028E, R14                       ; [F428E]
   03B930  d7 40 3d 00  EXTP    #0x3D, #1
   03B934  f6 8e 90 02  MOV     0x0290, ZEROS                     ; [F4290]
-  03B938  f6 8e 4a a2  MOV     0xA24A, ZEROS                     ; [F624A]
+  03B938  f6 8e 4a a2  MOV     0xA24A, ZEROS                     ; [F224A]
   03B93C  f6 8e 4c a2  MOV     0xA24C, ZEROS                     ; [F224C]
   03B940  db 00        RETS    
 
@@ -47303,7 +47303,7 @@ loc_03BBE6:
   03BBE6  9a 0d 0d 20  JNB     0xFD1A.2, loc_03BC04
   03BBEA  d7 40 18 00  EXTP    #0x18, #1
   03BBEE  c2 fc 3d 02  MOVBZ   R12, 0x023D                       ; [6023D]
-  03BBF2  42 fc 4e a2  CMP     R12, 0xA24E                       ; [6224E]
+  03BBF2  42 fc 4e a2  CMP     R12, 0xA24E                       ; [F224E]
   03BBF6  ed 02        JMPR    cc_UGT, loc_03BBFC
   03BBF8  0f 4f        BSET    0xFD9E.0
   03BBFA  0d 07        JMPR    cc_UC, loc_03BC0A
@@ -47363,7 +47363,7 @@ loc_03BC7A:
 loc_03BC88:
   03BC88  d7 40 3d 00  EXTP    #0x3D, #1
   03BC8C  24 8f 90 02  SUB     0x0290, ONES                      ; [F4290]
-  03BC90  f2 f9 5c a2  MOV     R9, 0xA25C                        ; [F625C]
+  03BC90  f2 f9 5c a2  MOV     R9, 0xA25C                        ; [F225C]
   03BC94  e0 0c        MOV     R12, #0
   03BC96  04 f9 4a a2  ADD     0xA24A, R9                        ; [F224A]
   03BC9A  14 fc 4c a2  ADDC    0xA24C, R12                       ; [F224C]
@@ -47381,7 +47381,7 @@ loc_03BCB8:
   03BCBC  f6 f9 8e 02  MOV     0x028E, R9                        ; [F428E]
   03BCC0  d7 40 3d 00  EXTP    #0x3D, #1
   03BCC4  f6 8e 90 02  MOV     0x0290, ZEROS                     ; [F4290]
-  03BCC8  f6 8e 4a a2  MOV     0xA24A, ZEROS                     ; [F624A]
+  03BCC8  f6 8e 4a a2  MOV     0xA24A, ZEROS                     ; [F224A]
   03BCCC  f6 8e 4c a2  MOV     0xA24C, ZEROS                     ; [F224C]
   03BCD0  0d 06        JMPR    cc_UC, loc_03BCDE
 
@@ -47718,7 +47718,7 @@ loc_03BFD4:
   03BFE4  f0 1c        MOV     R1, R12
   03BFE6  d7 40 3d 00  EXTP    #0x3D, #1
   03BFEA  f7 f2 a9 02  MOVB    0x02A9, RL1                       ; [F42A9]
-  03BFEE  f4 40 12 00  MOVB    RL2, [R0+#0x0012]                 ; [F4012]
+  03BFEE  f4 40 12 00  MOVB    RL2, [R0+#0x0012]                 ; [74012]
   03BFF2  c0 4c        MOVBZ   R4, RL6
   03BFF4  d0 2d        MOVBS   R2, RH6
   03BFF6  0b cd        MUL     R12, R13
@@ -47799,7 +47799,7 @@ loc_03C0A4:
   03C0B2  f6 f8 92 02  MOV     0x0292, R8                        ; [F4292]
   03C0B6  d7 40 3d 00  EXTP    #0x3D, #1
   03C0BA  f6 fd 9e 02  MOV     0x029E, R13                       ; [F429E]
-  03C0BE  f6 f9 54 a2  MOV     0xA254, R9                        ; [F6254]
+  03C0BE  f6 f9 54 a2  MOV     0xA254, R9                        ; [F2254]
   03C0C2  f6 f7 56 a2  MOV     0xA256, R7                        ; [F2256]
   03C0C6  d4 c0 02 00  MOV     R12, [R0+#0x0002]                 ; [74002]
   03C0CA  d4 e0 04 00  MOV     R14, [R0+#0x0004]                 ; [74004]
@@ -48378,22 +48378,22 @@ loc_03C62E:
   03C62E  9a 4f 07 d0  JNB     0xFD9E.13, loc_03C640
   03C632  d7 40 3d 00  EXTP    #0x3D, #1
   03C636  f2 f8 9a 06  MOV     R8, 0x069A                        ; [F469A]
-  03C63A  c4 80 04 00  MOV     [R0+#0x0004], R8                  ; [F4004]
+  03C63A  c4 80 04 00  MOV     [R0+#0x0004], R8                  ; [74004]
   03C63E  0d 06        JMPR    cc_UC, loc_03C64C
 loc_03C640:
   03C640  d7 40 3c 00  EXTP    #0x3C, #1
   03C644  f2 f8 3e 00  MOV     R8, 0x003E                        ; [F003E]
-  03C648  c4 80 04 00  MOV     [R0+#0x0004], R8                  ; [F0004]
+  03C648  c4 80 04 00  MOV     [R0+#0x0004], R8                  ; [74004]
 loc_03C64C:
   03C64C  9a 4f 07 d0  JNB     0xFD9E.13, loc_03C65E
   03C650  d7 40 3d 00  EXTP    #0x3D, #1
   03C654  f2 f8 9c 06  MOV     R8, 0x069C                        ; [F469C]
-  03C658  c4 80 08 00  MOV     [R0+#0x0008], R8                  ; [F4008]
+  03C658  c4 80 08 00  MOV     [R0+#0x0008], R8                  ; [74008]
   03C65C  0d 06        JMPR    cc_UC, loc_03C66A
 loc_03C65E:
   03C65E  d7 40 3c 00  EXTP    #0x3C, #1
   03C662  f2 f8 3c 00  MOV     R8, 0x003C                        ; [F003C]
-  03C666  c4 80 08 00  MOV     [R0+#0x0008], R8                  ; [F0008]
+  03C666  c4 80 08 00  MOV     [R0+#0x0008], R8                  ; [74008]
 loc_03C66A:
   03C66A  9a 10 0d a0  JNB     0xFD20.10, loc_03C688
   03C66E  f2 f8 60 a2  MOV     R8, 0xA260                        ; [F2260]
@@ -48413,22 +48413,22 @@ loc_03C68E:
   03C68E  9a 4f 07 f0  JNB     0xFD9E.15, loc_03C6A0
   03C692  d7 40 3d 00  EXTP    #0x3D, #1
   03C696  f2 f8 a0 06  MOV     R8, 0x06A0                        ; [F46A0]
-  03C69A  c4 80 0a 00  MOV     [R0+#0x000A], R8                  ; [F400A]
+  03C69A  c4 80 0a 00  MOV     [R0+#0x000A], R8                  ; [7400A]
   03C69E  0d 06        JMPR    cc_UC, loc_03C6AC
 loc_03C6A0:
   03C6A0  d7 40 3c 00  EXTP    #0x3C, #1
   03C6A4  f2 f8 42 00  MOV     R8, 0x0042                        ; [F0042]
-  03C6A8  c4 80 0a 00  MOV     [R0+#0x000A], R8                  ; [F000A]
+  03C6A8  c4 80 0a 00  MOV     [R0+#0x000A], R8                  ; [7400A]
 loc_03C6AC:
   03C6AC  9a 4f 07 f0  JNB     0xFD9E.15, loc_03C6BE
   03C6B0  d7 40 3d 00  EXTP    #0x3D, #1
   03C6B4  f2 f8 9e 06  MOV     R8, 0x069E                        ; [F469E]
-  03C6B8  c4 80 06 00  MOV     [R0+#0x0006], R8                  ; [F4006]
+  03C6B8  c4 80 06 00  MOV     [R0+#0x0006], R8                  ; [74006]
   03C6BC  0d 06        JMPR    cc_UC, loc_03C6CA
 loc_03C6BE:
   03C6BE  d7 40 3c 00  EXTP    #0x3C, #1
   03C6C2  f2 f8 40 00  MOV     R8, 0x0040                        ; [F0040]
-  03C6C6  c4 80 06 00  MOV     [R0+#0x0006], R8                  ; [F0006]
+  03C6C6  c4 80 06 00  MOV     [R0+#0x0006], R8                  ; [74006]
 loc_03C6CA:
   03C6CA  d7 40 3c 00  EXTP    #0x3C, #1
   03C6CE  f2 f8 40 04  MOV     R8, 0x0440                        ; [F0440]
@@ -49379,7 +49379,7 @@ loc_03D05A:
   03D064  9a 30 0d 80  JNB     0xFD60.8, loc_03D082
   03D068  d7 40 18 00  EXTP    #0x18, #1
   03D06C  c2 f8 ab 05  MOVBZ   R8, 0x05AB                        ; [605AB]
-  03D070  42 f8 7a a2  CMP     R8, 0xA27A                        ; [6227A]
+  03D070  42 f8 7a a2  CMP     R8, 0xA27A                        ; [F227A]
   03D074  ed 02        JMPR    cc_UGT, loc_03D07A
   03D076  6f 50        BSET    0xFDA0.6
   03D078  0d 07        JMPR    cc_UC, loc_03D088
@@ -50498,7 +50498,7 @@ loc_03DA84:
   03DA88  9a 22 0d a0  JNB     0xFD44.10, loc_03DAA6
   03DA8C  d7 40 18 00  EXTP    #0x18, #1
   03DA90  c2 fc cc 05  MOVBZ   R12, 0x05CC                       ; [605CC]
-  03DA94  42 fc 84 a2  CMP     R12, 0xA284                       ; [62284]
+  03DA94  42 fc 84 a2  CMP     R12, 0xA284                       ; [F2284]
   03DA98  ed 02        JMPR    cc_UGT, loc_03DA9E
   03DA9A  7f 51        BSET    0xFDA2.7
   03DA9C  0d 07        JMPR    cc_UC, loc_03DAAC
@@ -50575,7 +50575,7 @@ loc_03DB3E:
   03DB42  8a 51 0c 90  JB      0xFDA2.9, loc_03DB5E
   03DB46  d7 40 18 00  EXTP    #0x18, #1
   03DB4A  c2 fc cd 05  MOVBZ   R12, 0x05CD                       ; [605CD]
-  03DB4E  42 fc 82 a2  CMP     R12, 0xA282                       ; [62282]
+  03DB4E  42 fc 82 a2  CMP     R12, 0xA282                       ; [F2282]
   03DB52  ed 02        JMPR    cc_UGT, loc_03DB58
   03DB54  5e 51        BCLR    0xFDA2.5
   03DB56  0d 06        JMPR    cc_UC, loc_03DB64
@@ -50984,7 +50984,7 @@ loc_03DEFA:
   03DF04  8a 2e 07 c0  JB      0xFD5C.12, loc_03DF16
   03DF08  d7 40 18 00  EXTP    #0x18, #1
   03DF0C  f3 f2 be 04  MOVB    RL1, 0x04BE                       ; [604BE]
-  03DF10  f7 f2 8c a2  MOVB    0xA28C, RL1                       ; [6228C]
+  03DF10  f7 f2 8c a2  MOVB    0xA28C, RL1                       ; [F228C]
   03DF14  0d 16        JMPR    cc_UC, loc_03DF42
 loc_03DF16:
   03DF16  d7 40 3d 00  EXTP    #0x3D, #1
@@ -51000,7 +51000,7 @@ loc_03DF2C:
 loc_03DF36:
   03DF36  d7 40 18 00  EXTP    #0x18, #1
   03DF3A  f3 f2 b3 04  MOVB    RL1, 0x04B3                       ; [604B3]
-  03DF3E  f7 f2 8c a2  MOVB    0xA28C, RL1                       ; [6228C]
+  03DF3E  f7 f2 8c a2  MOVB    0xA28C, RL1                       ; [F228C]
 loc_03DF42:
   03DF42  f3 f2 8b a2  MOVB    RL1, 0xA28B                       ; [F228B]
   03DF46  43 f2 8c a2  CMPB    RL1, 0xA28C                       ; [F228C]
@@ -51060,7 +51060,7 @@ loc_03DFD2:
   03DFD8  f7 f2 f6 08  MOVB    0x08F6, RL1                       ; [F48F6]
   03DFDC  f7 f2 f7 08  MOVB    0x08F7, RL1                       ; [F48F7]
 loc_03DFE0:
-  03DFE0  f7 8e 8a a2  MOVB    0xA28A, ZEROS                     ; [F628A]
+  03DFE0  f7 8e 8a a2  MOVB    0xA28A, ZEROS                     ; [F228A]
   03DFE4  ea 00 0a e3  JMPA    cc_UC, loc_03E30A
 
 ;======================================================================
@@ -51357,7 +51357,7 @@ sub_03E274:    ; found by: gap
   03E27E  8a 2e 07 c0  JB      0xFD5C.12, loc_03E290
   03E282  d7 40 18 00  EXTP    #0x18, #1
   03E286  f3 f2 be 04  MOVB    RL1, 0x04BE                       ; [604BE]
-  03E28A  f7 f2 8f a2  MOVB    0xA28F, RL1                       ; [6228F]
+  03E28A  f7 f2 8f a2  MOVB    0xA28F, RL1                       ; [F228F]
   03E28E  0d 16        JMPR    cc_UC, loc_03E2BC
 loc_03E290:
   03E290  d7 40 3d 00  EXTP    #0x3D, #1
@@ -51367,7 +51367,7 @@ loc_03E290:
   03E2A0  9d 07        JMPR    cc_UGE, loc_03E2B0
   03E2A2  d7 40 18 00  EXTP    #0x18, #1
   03E2A6  f3 f2 b2 04  MOVB    RL1, 0x04B2                       ; [604B2]
-  03E2AA  f7 f2 8f a2  MOVB    0xA28F, RL1                       ; [6228F]
+  03E2AA  f7 f2 8f a2  MOVB    0xA28F, RL1                       ; [F228F]
   03E2AE  0d 06        JMPR    cc_UC, loc_03E2BC
 loc_03E2B0:
   03E2B0  d7 40 18 00  EXTP    #0x18, #1
@@ -51949,7 +51949,7 @@ loc_03E86C:
   03E894  dd 0d        JMPR    cc_SGE, loc_03E8B0
   03E896  d7 40 18 00  EXTP    #0x18, #1
   03E89A  c2 f8 40 06  MOVBZ   R8, 0x0640                        ; [60640]
-  03E89E  42 f8 96 a2  CMP     R8, 0xA296                        ; [62296]
+  03E89E  42 f8 96 a2  CMP     R8, 0xA296                        ; [F2296]
   03E8A2  ed 02        JMPR    cc_UGT, loc_03E8A8
   03E8A4  3f 52        BSET    0xFDA4.3
   03E8A6  0d 07        JMPR    cc_UC, loc_03E8B6
@@ -52853,7 +52853,7 @@ sub_03F2B4:    ; found by: gap
   03F374  9a 02 0d 20  JNB     0xFD04.2, loc_03F392
   03F378  d7 40 18 00  EXTP    #0x18, #1
   03F37C  c2 fc ee 05  MOVBZ   R12, 0x05EE                       ; [605EE]
-  03F380  42 fc e6 a2  CMP     R12, 0xA2E6                       ; [622E6]
+  03F380  42 fc e6 a2  CMP     R12, 0xA2E6                       ; [F22E6]
   03F384  ed 02        JMPR    cc_UGT, loc_03F38A
   03F386  2f 53        BSET    0xFDA6.2
   03F388  0d 07        JMPR    cc_UC, loc_03F398
@@ -52899,7 +52899,7 @@ loc_03F3E4:
   03F3E4  9a f8 0d f0  JNB     R8.15, loc_03F402
   03F3E8  d7 40 18 00  EXTP    #0x18, #1
   03F3EC  c2 fc 6f 00  MOVBZ   R12, 0x006F                       ; [6006F]
-  03F3F0  42 fc e4 a2  CMP     R12, 0xA2E4                       ; [622E4]
+  03F3F0  42 fc e4 a2  CMP     R12, 0xA2E4                       ; [F22E4]
   03F3F4  ed 02        JMPR    cc_UGT, loc_03F3FA
   03F3F6  1f 53        BSET    0xFDA6.1
   03F3F8  0d 07        JMPR    cc_UC, loc_03F408
@@ -53008,7 +53008,7 @@ loc_03F4C8:
   03F4D4  f6 f9 88 07  MOV     0x0788, R9                        ; [F4788]
   03F4D8  d7 40 3d 00  EXTP    #0x3D, #1
   03F4DC  f2 fc 0e 04  MOV     R12, 0x040E                       ; [F440E]
-  03F4E0  42 fc ea a2  CMP     R12, 0xA2EA                       ; [F62EA]
+  03F4E0  42 fc ea a2  CMP     R12, 0xA2EA                       ; [F22EA]
   03F4E4  2d 05        JMPR    cc_EQ, loc_03F4F0
   03F4E6  d7 40 18 00  EXTP    #0x18, #1
   03F4EA  f2 fc 20 06  MOV     R12, 0x0620                       ; [60620]
@@ -53335,7 +53335,7 @@ loc_03F830:
   03F830  f6 f9 e8 a2  MOV     0xA2E8, R9                        ; [F22E8]
   03F834  d7 40 3d 00  EXTP    #0x3D, #1
   03F838  f2 f8 0e 04  MOV     R8, 0x040E                        ; [F440E]
-  03F83C  f6 f8 ea a2  MOV     0xA2EA, R8                        ; [F62EA]
+  03F83C  f6 f8 ea a2  MOV     0xA2EA, R8                        ; [F22EA]
   03F840  f6 fe ec a2  MOV     0xA2EC, R14                       ; [F22EC]
   03F844  98 80        MOV     R8, [R0+]
   03F846  98 90        MOV     R9, [R0+]
@@ -53627,7 +53627,7 @@ loc_03FB3A:
   03FB50  04 fc fa 00  ADD     0x00FA, R12                       ; [F40FA]
   03FB54  d7 40 3d 00  EXTP    #0x3D, #1
   03FB58  25 8f 00 01  SUBB    0x0100, ONES                      ; [F4100]
-  03FB5C  43 fe ee a2  CMPB    RL7, 0xA2EE                       ; [F62EE]
+  03FB5C  43 fe ee a2  CMPB    RL7, 0xA2EE                       ; [F22EE]
   03FB60  fd 02        JMPR    cc_ULE, loc_03FB66
   03FB62  6f 88        BSET    PSW.6
   03FB64  0d 01        JMPR    cc_UC, loc_03FB68
@@ -53751,7 +53751,7 @@ loc_03FC68:
 loc_03FC6E:
   03FC6E  d7 40 3d 00  EXTP    #0x3D, #1
   03FC72  f7 f2 67 01  MOVB    0x0167, RL1                       ; [F4167]
-  03FC76  d4 40 02 00  MOV     R4, [R0+#0x0002]                  ; [F4002]
+  03FC76  d4 40 02 00  MOV     R4, [R0+#0x0002]                  ; [74002]
   03FC7A  c0 29        MOVBZ   R2, RH4
   03FC7C  1b 49        MULU    R4, R9
   03FC7E  f2 f5 0c fe  MOV     R5, MDH
@@ -54434,13 +54434,13 @@ loc_0404AC:
 loc_0404C6:
   0404C6  d7 40 3d 00  EXTP    #0x3D, #1
   0404CA  22 f9 74 05  SUB     R9, 0x0574                        ; [F4574]
-  0404CE  c4 90 2e 00  MOV     [R0+#0x002E], R9                  ; [F402E]
+  0404CE  c4 90 2e 00  MOV     [R0+#0x002E], R9                  ; [7402E]
 loc_0404D2:
   0404D2  d7 40 18 00  EXTP    #0x18, #1
   0404D6  f2 f9 ea 05  MOV     R9, 0x05EA                        ; [605EA]
   0404DA  d7 40 18 00  EXTP    #0x18, #1
   0404DE  02 f9 ec 05  ADD     R9, 0x05EC                        ; [605EC]
-  0404E2  c4 90 0e 00  MOV     [R0+#0x000E], R9                  ; [6000E]
+  0404E2  c4 90 0e 00  MOV     [R0+#0x000E], R9                  ; [7400E]
   0404E6  d7 40 18 00  EXTP    #0x18, #1
   0404EA  42 f9 ea 05  CMP     R9, 0x05EA                        ; [605EA]
   0404EE  9d 04        JMPR    cc_UGE, loc_0404F8
@@ -54450,7 +54450,7 @@ loc_0404F8:
   0404F8  9a 03 07 10  JNB     0xFD06.1, loc_04050A
   0404FC  d7 40 18 00  EXTP    #0x18, #1
   040500  f2 f9 ea 05  MOV     R9, 0x05EA                        ; [605EA]
-  040504  c4 90 90 00  MOV     [R0+#0x0090], R9                  ; [60090]
+  040504  c4 90 90 00  MOV     [R0+#0x0090], R9                  ; [74090]
   040508  0d 04        JMPR    cc_UC, loc_040512
 loc_04050A:
   04050A  d4 90 0e 00  MOV     R9, [R0+#0x000E]                  ; [7400E]
@@ -54488,7 +54488,7 @@ loc_04056C:
   04056C  9a 08 07 10  JNB     0xFD10.1, loc_04057E
   040570  d7 40 18 00  EXTP    #0x18, #1
   040574  f2 f9 14 01  MOV     R9, 0x0114                        ; [60114]
-  040578  c4 90 28 00  MOV     [R0+#0x0028], R9                  ; [60028]
+  040578  c4 90 28 00  MOV     [R0+#0x0028], R9                  ; [74028]
   04057C  0d 02        JMPR    cc_UC, loc_040582
 loc_04057E:
   04057E  c4 c0 28 00  MOV     [R0+#0x0028], R12                 ; [74028]
@@ -54500,7 +54500,7 @@ loc_040582:
 loc_04058E:
   04058E  d7 40 3d 00  EXTP    #0x3D, #1
   040592  f2 f9 54 01  MOV     R9, 0x0154                        ; [F4154]
-  040596  c4 90 26 00  MOV     [R0+#0x0026], R9                  ; [F4026]
+  040596  c4 90 26 00  MOV     [R0+#0x0026], R9                  ; [74026]
 loc_04059A:
   04059A  e6 fc fa 32  MOV     R12, #0x32FA
   04059E  e6 fd 0f 00  MOV     R13, #0x000F
@@ -54526,7 +54526,7 @@ loc_04059A:
   0405E2  f2 fd 78 00  MOV     R13, 0x0078                       ; [F4078]
   0405E6  d7 40 18 00  EXTP    #0x18, #1
   0405EA  02 fd 72 04  ADD     R13, 0x0472                       ; [60472]
-  0405EE  c4 d0 3c 00  MOV     [R0+#0x003C], R13                 ; [6003C]
+  0405EE  c4 d0 3c 00  MOV     [R0+#0x003C], R13                 ; [7403C]
   0405F2  d7 40 3d 00  EXTP    #0x3D, #1
   0405F6  42 fd 78 00  CMP     R13, 0x0078                       ; [F4078]
   0405FA  9d 04        JMPR    cc_UGE, loc_040604
@@ -54680,7 +54680,7 @@ loc_040710:
   0407A8  8a 52 07 c0  JB      0xFDA4.12, loc_0407BA
   0407AC  d7 40 3d 00  EXTP    #0x3D, #1
   0407B0  f2 f9 78 00  MOV     R9, 0x0078                        ; [F4078]
-  0407B4  c4 90 12 00  MOV     [R0+#0x0012], R9                  ; [F4012]
+  0407B4  c4 90 12 00  MOV     [R0+#0x0012], R9                  ; [74012]
   0407B8  0d 35        JMPR    cc_UC, loc_040824
 loc_0407BA:
   0407BA  d7 40 3d 00  EXTP    #0x3D, #1
@@ -54937,7 +54937,7 @@ loc_040A56:
   040A5E  9a 08 07 10  JNB     0xFD10.1, loc_040A70
   040A62  d7 40 18 00  EXTP    #0x18, #1
   040A66  f2 f9 14 01  MOV     R9, 0x0114                        ; [60114]
-  040A6A  c4 90 44 00  MOV     [R0+#0x0044], R9                  ; [60044]
+  040A6A  c4 90 44 00  MOV     [R0+#0x0044], R9                  ; [74044]
   040A6E  0d 02        JMPR    cc_UC, loc_040A74
 loc_040A70:
   040A70  c4 c0 44 00  MOV     [R0+#0x0044], R12                 ; [74044]
@@ -55174,7 +55174,7 @@ loc_040CA0:
 loc_040CB0:
   040CB0  d7 40 3d 00  EXTP    #0x3D, #1
   040CB4  f2 fc fe 00  MOV     R12, 0x00FE                       ; [F40FE]
-  040CB8  c4 c0 80 00  MOV     [R0+#0x0080], R12                 ; [F4080]
+  040CB8  c4 c0 80 00  MOV     [R0+#0x0080], R12                 ; [74080]
 loc_040CBC:
   040CBC  9a 08 02 40  JNB     0xFD10.4, loc_040CC4
   040CC0  8a 52 0f c0  JB      0xFDA4.12, loc_040CE2
@@ -55196,7 +55196,7 @@ loc_040CE4:
   040CE4  4a 88 08 63  BMOV    0xFD10.3, PSW.6
   040CE8  d7 40 3d 00  EXTP    #0x3D, #1
   040CEC  f6 f9 5c 01  MOV     0x015C, R9                        ; [F415C]
-  040CF0  f2 fd ce a2  MOV     R13, 0xA2CE                       ; [F62CE]
+  040CF0  f2 fd ce a2  MOV     R13, 0xA2CE                       ; [F22CE]
   040CF4  f0 cd        MOV     R12, R13
   040CF6  d7 40 18 00  EXTP    #0x18, #1
   040CFA  f2 fe 56 05  MOV     R14, 0x0556                       ; [60556]
@@ -55494,7 +55494,7 @@ loc_040FF8:
 loc_041000:
   041000  d7 40 3d 00  EXTP    #0x3D, #1
   041004  f6 f9 70 05  MOV     0x0570, R9                        ; [F4570]
-  041008  f2 f1 c4 a2  MOV     R1, 0xA2C4                        ; [F62C4]
+  041008  f2 f1 c4 a2  MOV     R1, 0xA2C4                        ; [F22C4]
   04100C  f2 fc c4 a2  MOV     R12, 0xA2C4                       ; [F22C4]
   041010  48 c0        CMP     R12, #0
   041012  dd 01        JMPR    cc_SGE, loc_041016
@@ -55596,7 +55596,7 @@ loc_0410DC:
   0410EE  c4 90 08 00  MOV     [R0+#0x0008], R9                  ; [74008]
   0410F2  d7 40 3d 00  EXTP    #0x3D, #1
   0410F6  f6 f9 8a 01  MOV     0x018A, R9                        ; [F418A]
-  0410FA  f4 e0 7a 00  MOVB    RL7, [R0+#0x007A]                 ; [F407A]
+  0410FA  f4 e0 7a 00  MOVB    RL7, [R0+#0x007A]                 ; [7407A]
   0410FE  c0 ec        MOVBZ   R14, RL6
   041100  d4 e0 70 00  MOV     R14, [R0+#0x0070]                 ; [74070]
   041104  0b ce        MUL     R12, R14
@@ -56373,7 +56373,7 @@ loc_041884:
   041884  f0 c7        MOV     R12, R7
   041886  d7 40 3d 00  EXTP    #0x3D, #1
   04188A  c2 f7 48 01  MOVBZ   R7, 0x0148                        ; [F4148]
-  04188E  d4 f0 88 00  MOV     R15, [R0+#0x0088]                 ; [F4088]
+  04188E  d4 f0 88 00  MOV     R15, [R0+#0x0088]                 ; [74088]
   041892  1b 7f        MULU    R7, R15
   041894  f2 fe 0c fe  MOV     R14, MDH
   041898  f2 f7 0e fe  MOV     R7, MDL
@@ -56458,7 +56458,7 @@ loc_041950:
   041950  d4 c0 14 00  MOV     R12, [R0+#0x0014]                 ; [74014]
   041954  d7 40 3d 00  EXTP    #0x3D, #1
   041958  f6 fc 42 01  MOV     0x0142, R12                       ; [F4142]
-  04195C  d4 f0 5a 00  MOV     R15, [R0+#0x005A]                 ; [F405A]
+  04195C  d4 f0 5a 00  MOV     R15, [R0+#0x005A]                 ; [7405A]
   041960  1b cf        MULU    R12, R15
   041962  f2 fd 0c fe  MOV     R13, MDH
   041966  f2 fc 0e fe  MOV     R12, MDL
@@ -56604,7 +56604,7 @@ loc_041AAA:
   041AAA  d4 70 02 00  MOV     R7, [R0+#0x0002]                  ; [74002]
   041AAE  d7 40 3d 00  EXTP    #0x3D, #1
   041AB2  f6 f7 52 01  MOV     0x0152, R7                        ; [F4152]
-  041AB6  d4 c0 94 00  MOV     R12, [R0+#0x0094]                 ; [F4094]
+  041AB6  d4 c0 94 00  MOV     R12, [R0+#0x0094]                 ; [74094]
   041ABA  f0 dc        MOV     R13, R12
   041ABC  bc fd        ASHR    R13, #15
   041ABE  e0 0e        MOV     R14, #0
@@ -56785,7 +56785,7 @@ loc_041BE0:
   041C46  f0 c4        MOV     R12, R4
   041C48  d7 40 3d 00  EXTP    #0x3D, #1
   041C4C  f6 fc e2 08  MOV     0x08E2, R12                       ; [F48E2]
-  041C50  d4 70 2e 00  MOV     R7, [R0+#0x002E]                  ; [F402E]
+  041C50  d4 70 2e 00  MOV     R7, [R0+#0x002E]                  ; [7402E]
   041C54  40 c7        CMP     R12, R7
   041C56  fd 02        JMPR    cc_ULE, loc_041C5C
   041C58  f0 dc        MOV     R13, R12
@@ -56877,7 +56877,7 @@ loc_041D24:
 loc_041D34:
   041D34  d7 40 3d 00  EXTP    #0x3D, #1
   041D38  f6 fc 76 05  MOV     0x0576, R12                       ; [F4576]
-  041D3C  d4 70 36 00  MOV     R7, [R0+#0x0036]                  ; [F4036]
+  041D3C  d4 70 36 00  MOV     R7, [R0+#0x0036]                  ; [74036]
   041D40  d4 d0 02 00  MOV     R13, [R0+#0x0002]                 ; [74002]
   041D44  40 7d        CMP     R7, R13
   041D46  9d 02        JMPR    cc_UGE, loc_041D4C
@@ -60095,7 +60095,7 @@ loc_043C60:
   043C60  4a f8 59 f3  BMOV    0xFDB2.3, R8.15
   043C64  d7 40 3d 00  EXTP    #0x3D, #1
   043C68  f2 f6 a4 00  MOV     R6, 0x00A4                        ; [F40A4]
-  043C6C  f6 f6 fa a2  MOV     0xA2FA, R6                        ; [F62FA]
+  043C6C  f6 f6 fa a2  MOV     0xA2FA, R6                        ; [F22FA]
   043C70  f6 fd f6 a2  MOV     0xA2F6, R13                       ; [F22F6]
   043C74  f6 f9 f8 a2  MOV     0xA2F8, R9                        ; [F22F8]
   043C78  d7 40 18 00  EXTP    #0x18, #1
@@ -60340,7 +60340,7 @@ loc_043EA0:
   043EAA  f7 f4 74 06  MOVB    0x0674, RL2                       ; [F4674]
   043EAE  d7 40 3d 00  EXTP    #0x3D, #1
   043EB2  f7 f2 70 06  MOVB    0x0670, RL1                       ; [F4670]
-  043EB6  f6 fc f4 a2  MOV     0xA2F4, R12                       ; [F62F4]
+  043EB6  f6 fc f4 a2  MOV     0xA2F4, R12                       ; [F22F4]
   043EBA  f6 f6 f0 a2  MOV     0xA2F0, R6                        ; [F22F0]
   043EBE  f6 f7 f2 a2  MOV     0xA2F2, R7                        ; [F22F2]
   043EC2  a8 80        MOV     R8, [R0]
@@ -61431,7 +61431,7 @@ loc_0449A6:
   0449C4  dd 0d        JMPR    cc_SGE, loc_0449E0
   0449C6  d7 40 18 00  EXTP    #0x18, #1
   0449CA  c2 fd 62 06  MOVBZ   R13, 0x0662                       ; [60662]
-  0449CE  42 fd 74 a3  CMP     R13, 0xA374                       ; [62374]
+  0449CE  42 fd 74 a3  CMP     R13, 0xA374                       ; [F2374]
   0449D2  ed 02        JMPR    cc_UGT, loc_0449D8
   0449D4  ff 5b        BSET    0xFDB6.15
   0449D6  0d 07        JMPR    cc_UC, loc_0449E6
@@ -61741,10 +61741,10 @@ sub_044D74:    ; found by: gap
   044D76  f0 74        MOV     R7, R4
   044D78  d7 40 3d 00  EXTP    #0x3D, #1
   044D7C  f6 f7 12 01  MOV     0x0112, R7                        ; [F4112]
-  044D80  f2 f8 76 a3  MOV     R8, 0xA376                        ; [F6376]
+  044D80  f2 f8 76 a3  MOV     R8, 0xA376                        ; [F2376]
   044D84  d7 40 3d 00  EXTP    #0x3D, #1
   044D88  f6 f8 f8 00  MOV     0x00F8, R8                        ; [F40F8]
-  044D8C  f2 fc 78 a3  MOV     R12, 0xA378                       ; [F6378]
+  044D8C  f2 fc 78 a3  MOV     R12, 0xA378                       ; [F2378]
   044D90  d7 40 3d 00  EXTP    #0x3D, #1
   044D94  f2 fd 08 01  MOV     R13, 0x0108                       ; [F4108]
   044D98  00 dc        ADD     R13, R12
@@ -61949,11 +61949,11 @@ loc_044F76:
   044F7E  a8 90        MOV     R9, [R0]
   044F80  d7 40 3d 00  EXTP    #0x3D, #1
   044F84  f6 f9 36 08  MOV     0x0836, R9                        ; [F4836]
-  044F88  f6 f6 7a a3  MOV     0xA37A, R6                        ; [F637A]
+  044F88  f6 f6 7a a3  MOV     0xA37A, R6                        ; [F237A]
   044F8C  f6 f7 76 a3  MOV     0xA376, R7                        ; [F2376]
   044F90  d7 40 3d 00  EXTP    #0x3D, #1
   044F94  f2 fc 08 01  MOV     R12, 0x0108                       ; [F4108]
-  044F98  f6 fc 78 a3  MOV     0xA378, R12                       ; [F6378]
+  044F98  f6 fc 78 a3  MOV     0xA378, R12                       ; [F2378]
   044F9C  08 02        ADD     R0, #2
   044F9E  98 60        MOV     R6, [R0+]
   044FA0  98 70        MOV     R7, [R0+]
@@ -62350,10 +62350,10 @@ loc_045368:
 loc_045370:
   045370  d7 40 3d 00  EXTP    #0x3D, #1
   045374  f2 f9 6e 04  MOV     R9, 0x046E                        ; [F446E]
-  045378  f6 f9 82 a3  MOV     0xA382, R9                        ; [F6382]
+  045378  f6 f9 82 a3  MOV     0xA382, R9                        ; [F2382]
   04537C  d7 40 3d 00  EXTP    #0x3D, #1
   045380  f2 f7 84 04  MOV     R7, 0x0484                        ; [F4484]
-  045384  f6 f7 84 a3  MOV     0xA384, R7                        ; [F6384]
+  045384  f6 f7 84 a3  MOV     0xA384, R7                        ; [F2384]
 loc_045388:
   045388  d7 50 3d 00  EXTP    #0x3D, #2
   04538C  f2 f9 26 04  MOV     R9, 0x0426                        ; [F4426]
@@ -63065,7 +63065,7 @@ loc_045B6E:
   045B7A  d7 40 3d 00  EXTP    #0x3D, #1
   045B7E  75 fe 5e 04  ORB     0x045E, RL7                       ; [F445E]
 loc_045B82:
-  045B82  d4 90 20 00  MOV     R9, [R0+#0x0020]                  ; [F4020]
+  045B82  d4 90 20 00  MOV     R9, [R0+#0x0020]                  ; [74020]
   045B86  d7 40 3d 00  EXTP    #0x3D, #1
   045B8A  c4 9d 60 04  MOV     [R13+#0x0460], R9                 ; [F4460]
 loc_045B8E:
@@ -63138,7 +63138,7 @@ loc_045C2E:
   045C32  f0 27        MOV     R2, R7
   045C34  d7 40 3d 00  EXTP    #0x3D, #1
   045C38  f6 fc 52 04  MOV     0x0452, R12                       ; [F4452]
-  045C3C  d4 70 10 00  MOV     R7, [R0+#0x0010]                  ; [F4010]
+  045C3C  d4 70 10 00  MOV     R7, [R0+#0x0010]                  ; [74010]
   045C40  7c 17        SHR     R7, #1
   045C42  1b 7c        MULU    R7, R12
   045C44  f2 ff 0c fe  MOV     R15, MDH
@@ -63314,7 +63314,7 @@ loc_045DEA:
   045DF2  9a 0d 0d 10  JNB     0xFD1A.1, loc_045E10
   045DF6  d7 40 18 00  EXTP    #0x18, #1
   045DFA  c2 fc fd 06  MOVBZ   R12, 0x06FD                       ; [606FD]
-  045DFE  42 fc 7c a3  CMP     R12, 0xA37C                       ; [6237C]
+  045DFE  42 fc 7c a3  CMP     R12, 0xA37C                       ; [F237C]
   045E02  ed 02        JMPR    cc_UGT, loc_045E08
   045E04  8f 5d        BSET    0xFDBA.8
   045E06  0d 07        JMPR    cc_UC, loc_045E16
@@ -63346,17 +63346,17 @@ loc_045E3A:
   045E48  d7 50 3d 00  EXTP    #0x3D, #2
   045E4C  d4 c7 10 08  MOV     R12, [R7+#0x0810]                 ; [F4810]
   045E50  d4 d7 12 08  MOV     R13, [R7+#0x0812]                 ; [F4812]
-  045E54  c4 c0 2e 00  MOV     [R0+#0x002E], R12                 ; [F402E]
+  045E54  c4 c0 2e 00  MOV     [R0+#0x002E], R12                 ; [7402E]
   045E58  c4 d0 30 00  MOV     [R0+#0x0030], R13                 ; [74030]
   045E5C  d7 40 3d 00  EXTP    #0x3D, #1
   045E60  d4 eb 20 08  MOV     R14, [R11+#0x0820]                ; [F4820]
-  045E64  c4 e0 32 00  MOV     [R0+#0x0032], R14                 ; [F4032]
+  045E64  c4 e0 32 00  MOV     [R0+#0x0032], R14                 ; [74032]
   045E68  d7 40 3d 00  EXTP    #0x3D, #1
   045E6C  f3 f2 d0 04  MOVB    RL1, 0x04D0                       ; [F44D0]
   045E70  3d 0d        JMPR    cc_NE, loc_045E8C
   045E72  d7 40 18 00  EXTP    #0x18, #1
   045E76  c2 ff 54 06  MOVBZ   R15, 0x0654                       ; [60654]
-  045E7A  42 ff 7e a3  CMP     R15, 0xA37E                       ; [6237E]
+  045E7A  42 ff 7e a3  CMP     R15, 0xA37E                       ; [F237E]
   045E7E  ed 02        JMPR    cc_UGT, loc_045E84
   045E80  7f 5d        BSET    0xFDBA.7
   045E82  0d 07        JMPR    cc_UC, loc_045E92
@@ -64216,7 +64216,7 @@ loc_046698:
   0466A6  d7 40 3d 00  EXTP    #0x3D, #1
   0466AA  f7 fc 46 04  MOVB    0x0446, RL6                       ; [F4446]
 loc_0466AE:
-  0466AE  d4 80 28 00  MOV     R8, [R0+#0x0028]                  ; [F4028]
+  0466AE  d4 80 28 00  MOV     R8, [R0+#0x0028]                  ; [74028]
   0466B2  d7 40 3d 00  EXTP    #0x3D, #1
   0466B6  f6 f8 4c 04  MOV     0x044C, R8                        ; [F444C]
   0466BA  9a fc 06 d0  JNB     R12.13, loc_0466CA
@@ -64245,7 +64245,7 @@ loc_0466F2:
   046700  d7 40 3d 00  EXTP    #0x3D, #1
   046704  f7 fc 46 04  MOVB    0x0446, RL6                       ; [F4446]
 loc_046708:
-  046708  d4 80 2c 00  MOV     R8, [R0+#0x002C]                  ; [F402C]
+  046708  d4 80 2c 00  MOV     R8, [R0+#0x002C]                  ; [7402C]
   04670C  d7 40 3d 00  EXTP    #0x3D, #1
   046710  f6 f8 4a 04  MOV     0x044A, R8                        ; [F444A]
   046714  9a fc 06 c0  JNB     R12.12, loc_046724
@@ -64276,19 +64276,19 @@ loc_04674C:
 loc_046762:
   046762  d7 40 3d 00  EXTP    #0x3D, #1
   046766  f6 f7 48 04  MOV     0x0448, R7                        ; [F4448]
-  04676A  d4 80 2a 00  MOV     R8, [R0+#0x002A]                  ; [F402A]
+  04676A  d4 80 2a 00  MOV     R8, [R0+#0x002A]                  ; [7402A]
   04676E  d7 40 3d 00  EXTP    #0x3D, #1
   046772  c4 8b 20 08  MOV     [R11+#0x0820], R8                 ; [F4820]
-  046776  d4 80 1c 00  MOV     R8, [R0+#0x001C]                  ; [F401C]
+  046776  d4 80 1c 00  MOV     R8, [R0+#0x001C]                  ; [7401C]
   04677A  d4 90 1e 00  MOV     R9, [R0+#0x001E]                  ; [7401E]
   04677E  d4 60 16 00  MOV     R6, [R0+#0x0016]                  ; [74016]
   046782  d7 50 3d 00  EXTP    #0x3D, #2
   046786  c4 86 10 08  MOV     [R6+#0x0810], R8                  ; [F4810]
   04678A  c4 96 12 08  MOV     [R6+#0x0812], R9                  ; [F4812]
-  04678E  d4 80 22 00  MOV     R8, [R0+#0x0022]                  ; [F4022]
+  04678E  d4 80 22 00  MOV     R8, [R0+#0x0022]                  ; [74022]
   046792  d7 40 3d 00  EXTP    #0x3D, #1
   046796  c4 8b ea 07  MOV     [R11+#0x07EA], R8                 ; [F47EA]
-  04679A  d4 80 0a 00  MOV     R8, [R0+#0x000A]                  ; [F400A]
+  04679A  d4 80 0a 00  MOV     R8, [R0+#0x000A]                  ; [7400A]
   04679E  d4 90 0c 00  MOV     R9, [R0+#0x000C]                  ; [7400C]
   0467A2  f6 f8 96 a3  MOV     0xA396, R8                        ; [F2396]
   0467A6  f6 f9 98 a3  MOV     0xA398, R9                        ; [F2398]
@@ -64611,7 +64611,7 @@ loc_046B3C:
   046B50  f6 8e 82 05  MOV     0x0582, ZEROS                     ; [F4582]
   046B54  d7 40 3d 00  EXTP    #0x3D, #1
   046B58  f6 8e 84 05  MOV     0x0584, ZEROS                     ; [F4584]
-  046B5C  f6 8e 9e a3  MOV     0xA39E, ZEROS                     ; [F639E]
+  046B5C  f6 8e 9e a3  MOV     0xA39E, ZEROS                     ; [F239E]
   046B60  f6 8e a0 a3  MOV     0xA3A0, ZEROS                     ; [F23A0]
   046B64  0d 25        JMPR    cc_UC, loc_046BB0
 loc_046B66:
@@ -65375,7 +65375,7 @@ loc_0473EC:
   0473F0  f2 f9 bc 04  MOV     R9, 0x04BC                        ; [F44BC]
   0473F4  d7 40 3d 00  EXTP    #0x3D, #1
   0473F8  f2 f8 0e 08  MOV     R8, 0x080E                        ; [F480E]
-  0473FC  c4 80 02 00  MOV     [R0+#0x0002], R8                  ; [F4002]
+  0473FC  c4 80 02 00  MOV     [R0+#0x0002], R8                  ; [74002]
   047400  e6 fc 24 28  MOV     R12, #0x2824
   047404  e6 fd 11 00  MOV     R13, #0x0011
   047408  d7 40 3d 00  EXTP    #0x3D, #1
@@ -66271,7 +66271,7 @@ loc_047D9A:
   047DE0  c4 50 42 00  MOV     [R0+#0x0042], R5                  ; [74042]
   047DE4  d7 40 18 00  EXTP    #0x18, #1
   047DE8  f2 f7 be 01  MOV     R7, 0x01BE                        ; [601BE]
-  047DEC  f2 f9 1c ff  MOV     R9, 0xFF1C                        ; [63F1C]
+  047DEC  f2 f9 1c ff  MOV     R9, ZEROS
   047DF0  c4 90 28 00  MOV     [R0+#0x0028], R9                  ; [74028]
   047DF4  c4 70 2a 00  MOV     [R0+#0x002A], R7                  ; [7402A]
   047DF8  8a 0d 03 30  JB      0xFD1A.3, loc_047E02
@@ -66330,7 +66330,7 @@ loc_047E54:
   047E7C  f6 f9 b4 01  MOV     0x01B4, R9                        ; [F41B4]
   047E80  d7 40 18 00  EXTP    #0x18, #1
   047E84  f2 f7 bc 01  MOV     R7, 0x01BC                        ; [601BC]
-  047E88  f2 f9 1c ff  MOV     R9, 0xFF1C                        ; [63F1C]
+  047E88  f2 f9 1c ff  MOV     R9, ZEROS
   047E8C  9a 0d 1b 50  JNB     0xFD1A.5, loc_047EC6
   047E90  d7 40 3c 00  EXTP    #0x3C, #1
   047E94  f2 f6 2e 00  MOV     R6, 0x002E                        ; [F002E]
@@ -66643,7 +66643,7 @@ loc_0481A0:
   0481C6  f7 fc dc 08  MOVB    0x08DC, RL6                       ; [F48DC]
   0481CA  d7 40 18 00  EXTP    #0x18, #1
   0481CE  f2 f3 be 06  MOV     R3, 0x06BE                        ; [606BE]
-  0481D2  f2 f2 1c ff  MOV     R2, 0xFF1C                        ; [63F1C]
+  0481D2  f2 f2 1c ff  MOV     R2, ZEROS
   0481D6  d7 40 18 00  EXTP    #0x18, #1
   0481DA  f2 fe e0 06  MOV     R14, 0x06E0                       ; [606E0]
   0481DE  f0 1e        MOV     R1, R14
@@ -66731,7 +66731,7 @@ loc_0482A2:
   0482A8  f6 f9 2a 00  MOV     0x002A, R9                        ; [F002A]
   0482AC  d7 40 3c 00  EXTP    #0x3C, #1
   0482B0  f3 f8 40 04  MOVB    RL4, 0x0440                       ; [F0440]
-  0482B4  e4 80 3d 00  MOVB    [R0+#0x003D], RL4                 ; [F003D]
+  0482B4  e4 80 3d 00  MOVB    [R0+#0x003D], RL4                 ; [7403D]
   0482B8  9a f4 02 00  JNB     R4.0, loc_0482C0
   0482BC  ff 5d        BSET    0xFDBA.15
   0482BE  0d 01        JMPR    cc_UC, loc_0482C2
@@ -66741,7 +66741,7 @@ loc_0482C2:
   0482C2  3a 5d f8 fa  BMOVN   R8.10, 0xFDBA.15
   0482C6  d7 40 3c 00  EXTP    #0x3C, #1
   0482CA  f3 f8 40 04  MOVB    RL4, 0x0440                       ; [F0440]
-  0482CE  e4 80 3c 00  MOVB    [R0+#0x003C], RL4                 ; [F003C]
+  0482CE  e4 80 3c 00  MOVB    [R0+#0x003C], RL4                 ; [7403C]
   0482D2  9a f4 02 10  JNB     R4.1, loc_0482DA
   0482D6  4f 5e        BSET    0xFDBC.4
   0482D8  0d 01        JMPR    cc_UC, loc_0482DC
@@ -66763,7 +66763,7 @@ loc_0482DC:
   048304  9a f8 0d 80  JNB     R8.8, loc_048322
   048308  d7 40 18 00  EXTP    #0x18, #1
   04830C  c2 f6 6d 01  MOVBZ   R6, 0x016D                        ; [6016D]
-  048310  42 f6 a8 a3  CMP     R6, 0xA3A8                        ; [623A8]
+  048310  42 f6 a8 a3  CMP     R6, 0xA3A8                        ; [F23A8]
   048314  ed 02        JMPR    cc_UGT, loc_04831A
   048316  1f 5e        BSET    0xFDBC.1
   048318  0d 07        JMPR    cc_UC, loc_048328
@@ -66825,7 +66825,7 @@ loc_048380:
   04838C  9a f8 0d 80  JNB     R8.8, loc_0483AA
   048390  d7 40 18 00  EXTP    #0x18, #1
   048394  c2 fc 6d 01  MOVBZ   R12, 0x016D                       ; [6016D]
-  048398  42 fc aa a3  CMP     R12, 0xA3AA                       ; [623AA]
+  048398  42 fc aa a3  CMP     R12, 0xA3AA                       ; [F23AA]
   04839C  ed 02        JMPR    cc_UGT, loc_0483A2
   04839E  2f 5e        BSET    0xFDBC.2
   0483A0  0d 07        JMPR    cc_UC, loc_0483B0
@@ -67051,7 +67051,7 @@ loc_0485A6:
   0485A6  3e 5e        BCLR    0xFDBC.3
   0485A8  d7 40 18 00  EXTP    #0x18, #1
   0485AC  f2 f9 b2 06  MOV     R9, 0x06B2                        ; [606B2]
-  0485B0  f6 f9 a6 a3  MOV     0xA3A6, R9                        ; [623A6]
+  0485B0  f6 f9 a6 a3  MOV     0xA3A6, R9                        ; [F23A6]
 loc_0485B4:
   0485B4  9a 5e 04 30  JNB     0xFDBC.3, loc_0485C0
   0485B8  9a f8 02 a0  JNB     R8.10, loc_0485C0
@@ -67069,7 +67069,7 @@ loc_0485D2:
   0485D2  d7 40 18 00  EXTP    #0x18, #1
   0485D6  f2 fd c6 01  MOV     R13, 0x01C6                       ; [601C6]
 loc_0485DA:
-  0485DA  d4 90 0a 00  MOV     R9, [R0+#0x000A]                  ; [6000A]
+  0485DA  d4 90 0a 00  MOV     R9, [R0+#0x000A]                  ; [7400A]
   0485DE  bc 39        ASHR    R9, #3
   0485E0  f0 49        MOV     R4, R9
   0485E2  f0 54        MOV     R5, R4
@@ -67133,7 +67133,7 @@ loc_048672:
   048672  d7 40 18 00  EXTP    #0x18, #1
   048676  f2 fd c2 01  MOV     R13, 0x01C2                       ; [601C2]
 loc_04867A:
-  04867A  d4 90 08 00  MOV     R9, [R0+#0x0008]                  ; [60008]
+  04867A  d4 90 08 00  MOV     R9, [R0+#0x0008]                  ; [74008]
   04867E  bc 39        ASHR    R9, #3
   048680  f0 49        MOV     R4, R9
   048682  f0 54        MOV     R5, R4
@@ -67218,7 +67218,7 @@ loc_048746:
   048746  d7 40 18 00  EXTP    #0x18, #1
   04874A  f2 fd c0 01  MOV     R13, 0x01C0                       ; [601C0]
 loc_04874E:
-  04874E  d4 40 2c 00  MOV     R4, [R0+#0x002C]                  ; [6002C]
+  04874E  d4 40 2c 00  MOV     R4, [R0+#0x002C]                  ; [7402C]
   048752  f0 54        MOV     R5, R4
   048754  bc f5        ASHR    R5, #15
   048756  f0 9a        MOV     R9, R10
@@ -67247,7 +67247,7 @@ loc_04878E:
   04878E  9a 21 07 c0  JNB     0xFD42.12, loc_0487A0
   048792  d7 40 3c 00  EXTP    #0x3C, #1
   048796  f2 f6 2c 00  MOV     R6, 0x002C                        ; [F002C]
-  04879A  f2 f9 1c ff  MOV     R9, 0xFF1C                        ; [F3F1C]
+  04879A  f2 f9 1c ff  MOV     R9, ZEROS
   04879E  0d 10        JMPR    cc_UC, loc_0487C0
 loc_0487A0:
   0487A0  f0 9d        MOV     R9, R13
@@ -67278,7 +67278,7 @@ loc_0487E0:
   0487E0  d7 40 18 00  EXTP    #0x18, #1
   0487E4  f2 fd c4 01  MOV     R13, 0x01C4                       ; [601C4]
 loc_0487E8:
-  0487E8  d4 40 20 00  MOV     R4, [R0+#0x0020]                  ; [60020]
+  0487E8  d4 40 20 00  MOV     R4, [R0+#0x0020]                  ; [74020]
   0487EC  f0 54        MOV     R5, R4
   0487EE  bc f5        ASHR    R5, #15
   0487F0  88 a0        MOV     [-R0], R10
@@ -67314,7 +67314,7 @@ loc_04883A:
   04883A  9a 21 07 c0  JNB     0xFD42.12, loc_04884C
   04883E  d7 40 3c 00  EXTP    #0x3C, #1
   048842  f2 fe 2e 00  MOV     R14, 0x002E                       ; [F002E]
-  048846  f2 fd 1c ff  MOV     R13, 0xFF1C                       ; [F3F1C]
+  048846  f2 fd 1c ff  MOV     R13, ZEROS
   04884A  0d 18        JMPR    cc_UC, loc_04887C
 loc_04884C:
   04884C  f0 4d        MOV     R4, R13
@@ -67594,7 +67594,7 @@ loc_048B06:
   048B0A  9a 02 0d 70  JNB     0xFD04.7, loc_048B28
   048B0E  d7 40 18 00  EXTP    #0x18, #1
   048B12  c2 f6 05 03  MOVBZ   R6, 0x0305                        ; [60305]
-  048B16  42 f6 d2 a3  CMP     R6, 0xA3D2                        ; [623D2]
+  048B16  42 f6 d2 a3  CMP     R6, 0xA3D2                        ; [F23D2]
   048B1A  ed 02        JMPR    cc_UGT, loc_048B20
   048B1C  bf 5f        BSET    0xFDBE.11
   048B1E  0d 07        JMPR    cc_UC, loc_048B2E
@@ -67629,7 +67629,7 @@ loc_048B5A:
   048B66  9a 5f 0d b0  JNB     0xFDBE.11, loc_048B84
   048B6A  d7 40 18 00  EXTP    #0x18, #1
   048B6E  c2 f6 64 02  MOVBZ   R6, 0x0264                        ; [60264]
-  048B72  42 f6 c4 a3  CMP     R6, 0xA3C4                        ; [623C4]
+  048B72  42 f6 c4 a3  CMP     R6, 0xA3C4                        ; [F23C4]
   048B76  ed 02        JMPR    cc_UGT, loc_048B7C
   048B78  af 5f        BSET    0xFDBE.10
   048B7A  0d 07        JMPR    cc_UC, loc_048B8A
@@ -67657,7 +67657,7 @@ loc_048B9A:
   048BAA  9a 17 0d 80  JNB     0xFD2E.8, loc_048BC8
   048BAE  d7 40 18 00  EXTP    #0x18, #1
   048BB2  c2 f6 64 02  MOVBZ   R6, 0x0264                        ; [60264]
-  048BB6  42 f6 d6 a3  CMP     R6, 0xA3D6                        ; [623D6]
+  048BB6  42 f6 d6 a3  CMP     R6, 0xA3D6                        ; [F23D6]
   048BBA  ed 02        JMPR    cc_UGT, loc_048BC0
   048BBC  0f 5f        BSET    0xFDBE.0
   048BBE  0d 07        JMPR    cc_UC, loc_048BCE
@@ -67708,7 +67708,7 @@ loc_048C20:
   048C30  8d 0d        JMPR    cc_ULT, loc_048C4C
   048C32  d7 40 18 00  EXTP    #0x18, #1
   048C36  c2 fc 64 02  MOVBZ   R12, 0x0264                       ; [60264]
-  048C3A  42 fc da a3  CMP     R12, 0xA3DA                       ; [623DA]
+  048C3A  42 fc da a3  CMP     R12, 0xA3DA                       ; [F23DA]
   048C3E  ed 02        JMPR    cc_UGT, loc_048C44
   048C40  1f 60        BSET    0xFDC0.1
   048C42  0d 07        JMPR    cc_UC, loc_048C52
@@ -67802,7 +67802,7 @@ loc_048D22:
   048D22  d7 40 18 00  EXTP    #0x18, #1
   048D26  f2 fc 0c 03  MOV     R12, 0x030C                       ; [6030C]
 loc_048D2A:
-  048D2A  42 fc c6 a3  CMP     R12, 0xA3C6                       ; [623C6]
+  048D2A  42 fc c6 a3  CMP     R12, 0xA3C6                       ; [F23C6]
   048D2E  ed 02        JMPR    cc_UGT, loc_048D34
   048D30  ff 5e        BSET    0xFDBC.15
   048D32  0d 07        JMPR    cc_UC, loc_048D42
@@ -67849,7 +67849,7 @@ loc_048D94:
   048D94  8a f8 0d 80  JB      R8.8, loc_048DB2
   048D98  d7 40 18 00  EXTP    #0x18, #1
   048D9C  c2 fc 62 02  MOVBZ   R12, 0x0262                       ; [60262]
-  048DA0  42 fc dc a3  CMP     R12, 0xA3DC                       ; [623DC]
+  048DA0  42 fc dc a3  CMP     R12, 0xA3DC                       ; [F23DC]
   048DA4  ed 02        JMPR    cc_UGT, loc_048DAA
   048DA6  2f 5f        BSET    0xFDBE.2
   048DA8  0d 07        JMPR    cc_UC, loc_048DB8
@@ -67900,7 +67900,7 @@ loc_048E18:
   048E18  9a 60 0d 40  JNB     0xFDC0.4, loc_048E36
   048E1C  d7 40 18 00  EXTP    #0x18, #1
   048E20  c2 fc 06 03  MOVBZ   R12, 0x0306                       ; [60306]
-  048E24  42 fc cc a3  CMP     R12, 0xA3CC                       ; [623CC]
+  048E24  42 fc cc a3  CMP     R12, 0xA3CC                       ; [F23CC]
   048E28  ed 02        JMPR    cc_UGT, loc_048E2E
   048E2A  3f 5f        BSET    0xFDBE.3
   048E2C  0d 07        JMPR    cc_UC, loc_048E3C
@@ -67991,7 +67991,7 @@ loc_048EFE:
   048F1A  fd 0d        JMPR    cc_ULE, loc_048F36
   048F1C  d7 40 18 00  EXTP    #0x18, #1
   048F20  c2 fd 06 03  MOVBZ   R13, 0x0306                       ; [60306]
-  048F24  42 fd ca a3  CMP     R13, 0xA3CA                       ; [623CA]
+  048F24  42 fd ca a3  CMP     R13, 0xA3CA                       ; [F23CA]
   048F28  ed 02        JMPR    cc_UGT, loc_048F2E
   048F2A  5f 5f        BSET    0xFDBE.5
   048F2C  0d 07        JMPR    cc_UC, loc_048F3C
@@ -68021,7 +68021,7 @@ loc_048F4A:
   048F6A  fd 0d        JMPR    cc_ULE, loc_048F86
   048F6C  d7 40 18 00  EXTP    #0x18, #1
   048F70  c2 fd 64 02  MOVBZ   R13, 0x0264                       ; [60264]
-  048F74  42 fd e0 a3  CMP     R13, 0xA3E0                       ; [623E0]
+  048F74  42 fd e0 a3  CMP     R13, 0xA3E0                       ; [F23E0]
   048F78  ed 02        JMPR    cc_UGT, loc_048F7E
   048F7A  cf 5f        BSET    0xFDBE.12
   048F7C  0d 07        JMPR    cc_UC, loc_048F8C
@@ -68037,7 +68037,7 @@ loc_048F8C:
   048F90  8a f8 0d 50  JB      R8.5, loc_048FAE
   048F94  d7 40 18 00  EXTP    #0x18, #1
   048F98  c2 fc 62 02  MOVBZ   R12, 0x0262                       ; [60262]
-  048F9C  42 fc e2 a3  CMP     R12, 0xA3E2                       ; [623E2]
+  048F9C  42 fc e2 a3  CMP     R12, 0xA3E2                       ; [F23E2]
   048FA0  ed 02        JMPR    cc_UGT, loc_048FA6
   048FA2  ef 5f        BSET    0xFDBE.14
   048FA4  0d 07        JMPR    cc_UC, loc_048FB4
@@ -68093,7 +68093,7 @@ loc_048FFE:
   049018  9a 36 0d e0  JNB     0xFD6C.14, loc_049036
   04901C  d7 40 18 00  EXTP    #0x18, #1
   049020  c2 fe 0e 03  MOVBZ   R14, 0x030E                       ; [6030E]
-  049024  42 fe c8 a3  CMP     R14, 0xA3C8                       ; [623C8]
+  049024  42 fe c8 a3  CMP     R14, 0xA3C8                       ; [F23C8]
   049028  ed 02        JMPR    cc_UGT, loc_04902E
   04902A  df 5f        BSET    0xFDBE.13
   04902C  0d 07        JMPR    cc_UC, loc_04903C
@@ -68139,7 +68139,7 @@ loc_049076:
   04908E  3d 06        JMPR    cc_NE, loc_04909C
   049090  d7 40 18 00  EXTP    #0x18, #1
   049094  f3 f4 0a 03  MOVB    RL2, 0x030A                       ; [6030A]
-  049098  f7 f4 e6 a3  MOVB    0xA3E6, RL2                       ; [623E6]
+  049098  f7 f4 e6 a3  MOVB    0xA3E6, RL2                       ; [F23E6]
 loc_04909C:
   04909C  f3 f2 e6 a3  MOVB    RL1, 0xA3E6                       ; [F23E6]
   0490A0  2d 04        JMPR    cc_EQ, loc_0490AA
@@ -68207,7 +68207,7 @@ loc_049122:
   04913A  9a f8 0d a0  JNB     R8.10, loc_049158
   04913E  d7 40 18 00  EXTP    #0x18, #1
   049142  c2 fc 64 02  MOVBZ   R12, 0x0264                       ; [60264]
-  049146  42 fc e4 a3  CMP     R12, 0xA3E4                       ; [623E4]
+  049146  42 fc e4 a3  CMP     R12, 0xA3E4                       ; [F23E4]
   04914A  ed 02        JMPR    cc_UGT, loc_049150
   04914C  0f 60        BSET    0xFDC0.0
   04914E  0d 07        JMPR    cc_UC, loc_04915E
@@ -68529,7 +68529,7 @@ loc_0494A0:
   0494A0  d7 40 3d 00  EXTP    #0x3D, #1
   0494A4  f2 f9 d6 02  MOV     R9, 0x02D6                        ; [F42D6]
 loc_0494A8:
-  0494A8  f2 fc f2 a3  MOV     R12, 0xA3F2                       ; [F63F2]
+  0494A8  f2 fc f2 a3  MOV     R12, 0xA3F2                       ; [F23F2]
   0494AC  9a fc 02 70  JNB     R12.7, loc_0494B4
   0494B0  4f 61        BSET    0xFDC2.4
   0494B2  0d 01        JMPR    cc_UC, loc_0494B6
@@ -68550,7 +68550,7 @@ loc_0494C8:
   0494D4  3d 06        JMPR    cc_NE, loc_0494E2
   0494D6  d7 40 18 00  EXTP    #0x18, #1
   0494DA  f3 f4 67 02  MOVB    RL2, 0x0267                       ; [60267]
-  0494DE  f7 f4 fc a3  MOVB    0xA3FC, RL2                       ; [623FC]
+  0494DE  f7 f4 fc a3  MOVB    0xA3FC, RL2                       ; [F23FC]
 loc_0494E2:
   0494E2  f3 f2 fc a3  MOVB    RL1, 0xA3FC                       ; [F23FC]
   0494E6  2d 04        JMPR    cc_EQ, loc_0494F0
@@ -68610,7 +68610,7 @@ loc_049572:
   049576  9a f8 0d f0  JNB     R8.15, loc_049594
   04957A  d7 40 18 00  EXTP    #0x18, #1
   04957E  c2 fc 64 02  MOVBZ   R12, 0x0264                       ; [60264]
-  049582  42 fc f0 a3  CMP     R12, 0xA3F0                       ; [623F0]
+  049582  42 fc f0 a3  CMP     R12, 0xA3F0                       ; [F23F0]
   049586  ed 02        JMPR    cc_UGT, loc_04958C
   049588  2f 61        BSET    0xFDC2.2
   04958A  0d 07        JMPR    cc_UC, loc_04959A
@@ -68692,7 +68692,7 @@ loc_049642:
   04964E  8a f8 0d e0  JB      R8.14, loc_04966C
   049652  d7 40 18 00  EXTP    #0x18, #1
   049656  c2 f9 64 02  MOVBZ   R9, 0x0264                        ; [60264]
-  04965A  42 f9 f4 a3  CMP     R9, 0xA3F4                        ; [623F4]
+  04965A  42 f9 f4 a3  CMP     R9, 0xA3F4                        ; [F23F4]
   04965E  ed 02        JMPR    cc_UGT, loc_049664
   049660  1f 61        BSET    0xFDC2.1
   049662  0d 07        JMPR    cc_UC, loc_049672
@@ -68725,7 +68725,7 @@ loc_0496A0:
   0496A0  d7 40 18 00  EXTP    #0x18, #1
   0496A4  f2 fc 48 02  MOV     R12, 0x0248                       ; [60248]
 loc_0496A8:
-  0496A8  42 fc f6 a3  CMP     R12, 0xA3F6                       ; [623F6]
+  0496A8  42 fc f6 a3  CMP     R12, 0xA3F6                       ; [F23F6]
   0496AC  ed 02        JMPR    cc_UGT, loc_0496B2
   0496AE  af 61        BSET    0xFDC2.10
   0496B0  0d 07        JMPR    cc_UC, loc_0496C0
@@ -68764,7 +68764,7 @@ loc_0496F0:
   0496F4  8a f8 0d c0  JB      R8.12, loc_049712
   0496F8  d7 40 18 00  EXTP    #0x18, #1
   0496FC  c2 f9 62 02  MOVBZ   R9, 0x0262                        ; [60262]
-  049700  42 f9 ea a3  CMP     R9, 0xA3EA                        ; [623EA]
+  049700  42 f9 ea a3  CMP     R9, 0xA3EA                        ; [F23EA]
   049704  ed 02        JMPR    cc_UGT, loc_04970A
   049706  ef 60        BSET    0xFDC0.14
   049708  0d 07        JMPR    cc_UC, loc_049718
@@ -68828,7 +68828,7 @@ loc_049790:
   049790  d7 40 18 00  EXTP    #0x18, #1
   049794  f2 fc 6a 02  MOV     R12, 0x026A                       ; [6026A]
 loc_049798:
-  049798  42 fc ec a3  CMP     R12, 0xA3EC                       ; [623EC]
+  049798  42 fc ec a3  CMP     R12, 0xA3EC                       ; [F23EC]
   04979C  ed 02        JMPR    cc_UGT, loc_0497A2
   04979E  0f 61        BSET    0xFDC2.0
   0497A0  0d 07        JMPR    cc_UC, loc_0497B0
@@ -68888,7 +68888,7 @@ loc_04980E:
   04982E  fd 0d        JMPR    cc_ULE, loc_04984A
   049830  d7 40 18 00  EXTP    #0x18, #1
   049834  c2 fc 64 02  MOVBZ   R12, 0x0264                       ; [60264]
-  049838  42 fc e8 a3  CMP     R12, 0xA3E8                       ; [623E8]
+  049838  42 fc e8 a3  CMP     R12, 0xA3E8                       ; [F23E8]
   04983C  ed 02        JMPR    cc_UGT, loc_049842
   04983E  6f 61        BSET    0xFDC2.6
   049840  0d 07        JMPR    cc_UC, loc_049850
@@ -69439,7 +69439,7 @@ loc_049DE0:
   049DE8  dd 0d        JMPR    cc_SGE, loc_049E04
   049DEA  d7 40 18 00  EXTP    #0x18, #1
   049DEE  c2 fd 96 06  MOVBZ   R13, 0x0696                       ; [60696]
-  049DF2  42 fd fe a3  CMP     R13, 0xA3FE                       ; [623FE]
+  049DF2  42 fd fe a3  CMP     R13, 0xA3FE                       ; [F23FE]
   049DF6  ed 02        JMPR    cc_UGT, loc_049DFC
   049DF8  de 61        BCLR    0xFDC2.13
   049DFA  0d 07        JMPR    cc_UC, loc_049E0A
@@ -69453,7 +69453,7 @@ loc_049E04:
 loc_049E0A:
   049E0A  d7 40 3c 00  EXTP    #0x3C, #1
   049E0E  d4 d9 7a 00  MOV     R13, [R9+#0x007A]                 ; [F007A]
-  049E12  c4 d0 08 00  MOV     [R0+#0x0008], R13                 ; [F0008]
+  049E12  c4 d0 08 00  MOV     [R0+#0x0008], R13                 ; [74008]
   049E16  00 cd        ADD     R12, R13
   049E18  f0 dc        MOV     R13, R12
   049E1A  9a 88 07 20  JNB     PSW.2, loc_049E2C
@@ -69472,7 +69472,7 @@ loc_049E2C:
 loc_049E3C:
   049E3C  d7 40 18 00  EXTP    #0x18, #1
   049E40  f2 fc 8c 06  MOV     R12, 0x068C                       ; [6068C]
-  049E44  c4 c0 06 00  MOV     [R0+#0x0006], R12                 ; [60006]
+  049E44  c4 c0 06 00  MOV     [R0+#0x0006], R12                 ; [74006]
 loc_049E48:
   049E48  f0 c1        MOV     R12, R1
   049E4A  8a 61 03 d0  JB      0xFDC2.13, loc_049E54
@@ -69510,7 +69510,7 @@ loc_049E86:
   049E86  9a 0d 0d 20  JNB     0xFD1A.2, loc_049EA4
   049E8A  d7 40 18 00  EXTP    #0x18, #1
   049E8E  c2 fc 3d 02  MOVBZ   R12, 0x023D                       ; [6023D]
-  049E92  42 fc 00 a4  CMP     R12, 0xA400                       ; [62400]
+  049E92  42 fc 00 a4  CMP     R12, 0xA400                       ; [F2400]
   049E96  ed 02        JMPR    cc_UGT, loc_049E9C
   049E98  3f 62        BSET    0xFDC4.3
   049E9A  0d 07        JMPR    cc_UC, loc_049EAA
@@ -69706,7 +69706,7 @@ loc_04A080:
 loc_04A088:
   04A088  d7 40 3c 00  EXTP    #0x3C, #1
   04A08C  c4 c9 7a 00  MOV     [R9+#0x007A], R12                 ; [F007A]
-  04A090  d4 80 02 00  MOV     R8, [R0+#0x0002]                  ; [F0002]
+  04A090  d4 80 02 00  MOV     R8, [R0+#0x0002]                  ; [74002]
   04A094  d4 90 04 00  MOV     R9, [R0+#0x0004]                  ; [74004]
   04A098  f6 f8 04 a4  MOV     0xA404, R8                        ; [F2404]
   04A09C  f6 f9 06 a4  MOV     0xA406, R9                        ; [F2406]
@@ -70198,7 +70198,7 @@ loc_04A4E4:
   04A4F2  f2 fc 0e a4  MOV     R12, 0xA40E                       ; [F240E]
   04A4F6  d7 40 3d 00  EXTP    #0x3D, #1
   04A4FA  f6 fc ba 00  MOV     0x00BA, R12                       ; [F40BA]
-  04A4FE  f6 8e 0e a4  MOV     0xA40E, ZEROS                     ; [F640E]
+  04A4FE  f6 8e 0e a4  MOV     0xA40E, ZEROS                     ; [F240E]
   04A502  db 00        RETS    
 
 ;======================================================================
@@ -70231,7 +70231,7 @@ loc_04A530:
   04A53E  f2 fc 0e a4  MOV     R12, 0xA40E                       ; [F240E]
   04A542  d7 40 3d 00  EXTP    #0x3D, #1
   04A546  f6 fc bc 00  MOV     0x00BC, R12                       ; [F40BC]
-  04A54A  f6 8e 0e a4  MOV     0xA40E, ZEROS                     ; [F640E]
+  04A54A  f6 8e 0e a4  MOV     0xA40E, ZEROS                     ; [F240E]
   04A54E  db 00        RETS    
 
 ;======================================================================
@@ -70625,7 +70625,7 @@ loc_04A94E:
   04A96C  f1 e2        MOVB    RL7, RL1
   04A96E  d7 40 3d 00  EXTP    #0x3D, #1
   04A972  f7 fe 3c 00  MOVB    0x003C, RL7                       ; [F403C]
-  04A976  f4 20 10 00  MOVB    RL1, [R0+#0x0010]                 ; [F4010]
+  04A976  f4 20 10 00  MOVB    RL1, [R0+#0x0010]                 ; [74010]
   04A97A  f4 40 14 00  MOVB    RL2, [R0+#0x0014]                 ; [74014]
   04A97E  01 24        ADDB    RL1, RL2
   04A980  f0 21        MOV     R2, R1
@@ -70942,7 +70942,7 @@ loc_04AC68:
   04AC68  f0 67        MOV     R6, R7
   04AC6A  d7 40 3d 00  EXTP    #0x3D, #1
   04AC6E  f6 f6 c8 00  MOV     0x00C8, R6                        ; [F40C8]
-  04AC72  c4 60 08 00  MOV     [R0+#0x0008], R6                  ; [F4008]
+  04AC72  c4 60 08 00  MOV     [R0+#0x0008], R6                  ; [74008]
   04AC76  48 60        CMP     R6, #0
   04AC78  dd 05        JMPR    cc_SGE, loc_04AC84
   04AC7A  d4 70 08 00  MOV     R7, [R0+#0x0008]                  ; [74008]
@@ -71006,7 +71006,7 @@ loc_04ACE4:
   04AD0A  f0 fd        MOV     R15, R13
   04AD0C  d7 40 3d 00  EXTP    #0x3D, #1
   04AD10  f2 f2 ba 00  MOV     R2, 0x00BA                        ; [F40BA]
-  04AD14  f6 fe 0c fe  MOV     0xFE0C, R14                       ; [F7E0C]
+  04AD14  f6 fe 0c fe  MOV     MDH, R14
   04AD18  f6 ff 0e fe  MOV     MDL, R15
   04AD1C  7b 22        DIVLU   R2
   04AD1E  f2 fd 0e fe  MOV     R13, MDL
@@ -71140,7 +71140,7 @@ loc_04AE58:
 loc_04AE5A:
   04AE5A  d7 40 3d 00  EXTP    #0x3D, #1
   04AE5E  f6 f7 ca 00  MOV     0x00CA, R7                        ; [F40CA]
-  04AE62  d4 c0 08 00  MOV     R12, [R0+#0x0008]                 ; [F4008]
+  04AE62  d4 c0 08 00  MOV     R12, [R0+#0x0008]                 ; [74008]
   04AE66  f0 d7        MOV     R13, R7
   04AE68  20 cd        SUB     R12, R13
   04AE6A  f0 dc        MOV     R13, R12
@@ -71465,7 +71465,7 @@ loc_04B166:
 loc_04B168:
   04B168  d7 40 3d 00  EXTP    #0x3D, #1
   04B16C  f6 fc c6 00  MOV     0x00C6, R12                       ; [F40C6]
-  04B170  d4 80 0a 00  MOV     R8, [R0+#0x000A]                  ; [F400A]
+  04B170  d4 80 0a 00  MOV     R8, [R0+#0x000A]                  ; [7400A]
   04B174  d4 90 0c 00  MOV     R9, [R0+#0x000C]                  ; [7400C]
   04B178  f6 f8 12 a4  MOV     0xA412, R8                        ; [F2412]
   04B17C  f6 f9 14 a4  MOV     0xA414, R9                        ; [F2414]
@@ -71789,7 +71789,7 @@ loc_04B49A:
   04B49E  9a 02 0d 70  JNB     0xFD04.7, loc_04B4BC
   04B4A2  d7 40 18 00  EXTP    #0x18, #1
   04B4A6  c2 f6 05 03  MOVBZ   R6, 0x0305                        ; [60305]
-  04B4AA  42 f6 2e a4  CMP     R6, 0xA42E                        ; [6242E]
+  04B4AA  42 f6 2e a4  CMP     R6, 0xA42E                        ; [F242E]
   04B4AE  ed 02        JMPR    cc_UGT, loc_04B4B4
   04B4B0  0f 64        BSET    0xFDC8.0
   04B4B2  0d 07        JMPR    cc_UC, loc_04B4C2
@@ -71808,7 +71808,7 @@ loc_04B4C2:
   04B4D2  fd 0d        JMPR    cc_ULE, loc_04B4EE
   04B4D4  d7 40 18 00  EXTP    #0x18, #1
   04B4D8  c2 fc 64 02  MOVBZ   R12, 0x0264                       ; [60264]
-  04B4DC  42 fc 22 a4  CMP     R12, 0xA422                       ; [62422]
+  04B4DC  42 fc 22 a4  CMP     R12, 0xA422                       ; [F2422]
   04B4E0  ed 02        JMPR    cc_UGT, loc_04B4E6
   04B4E2  4f 63        BSET    0xFDC6.4
   04B4E4  0d 07        JMPR    cc_UC, loc_04B4F4
@@ -71823,7 +71823,7 @@ loc_04B4F4:
   04B4F4  9a 63 0d 40  JNB     0xFDC6.4, loc_04B512
   04B4F8  d7 40 18 00  EXTP    #0x18, #1
   04B4FC  c2 f6 63 02  MOVBZ   R6, 0x0263                        ; [60263]
-  04B500  42 f6 30 a4  CMP     R6, 0xA430                        ; [62430]
+  04B500  42 f6 30 a4  CMP     R6, 0xA430                        ; [F2430]
   04B504  ed 02        JMPR    cc_UGT, loc_04B50A
   04B506  2f 64        BSET    0xFDC8.2
   04B508  0d 07        JMPR    cc_UC, loc_04B518
@@ -71841,7 +71841,7 @@ loc_04B518:
   04B524  9a 64 0d 00  JNB     0xFDC8.0, loc_04B542
   04B528  d7 40 18 00  EXTP    #0x18, #1
   04B52C  c2 f6 64 02  MOVBZ   R6, 0x0264                        ; [60264]
-  04B530  42 f6 32 a4  CMP     R6, 0xA432                        ; [62432]
+  04B530  42 f6 32 a4  CMP     R6, 0xA432                        ; [F2432]
   04B534  ed 02        JMPR    cc_UGT, loc_04B53A
   04B536  ef 63        BSET    0xFDC6.14
   04B538  0d 07        JMPR    cc_UC, loc_04B548
@@ -71869,7 +71869,7 @@ loc_04B558:
   04B568  9a 17 0d 80  JNB     0xFD2E.8, loc_04B586
   04B56C  d7 40 18 00  EXTP    #0x18, #1
   04B570  c2 f6 64 02  MOVBZ   R6, 0x0264                        ; [60264]
-  04B574  42 f6 34 a4  CMP     R6, 0xA434                        ; [62434]
+  04B574  42 f6 34 a4  CMP     R6, 0xA434                        ; [F2434]
   04B578  ed 02        JMPR    cc_UGT, loc_04B57E
   04B57A  ff 63        BSET    0xFDC6.15
   04B57C  0d 07        JMPR    cc_UC, loc_04B58C
@@ -71948,7 +71948,7 @@ loc_04B63C:
   04B63C  d7 40 18 00  EXTP    #0x18, #1
   04B640  f2 fc 0c 03  MOV     R12, 0x030C                       ; [6030C]
 loc_04B644:
-  04B644  42 fc 26 a4  CMP     R12, 0xA426                       ; [62426]
+  04B644  42 fc 26 a4  CMP     R12, 0xA426                       ; [F2426]
   04B648  ed 02        JMPR    cc_UGT, loc_04B64E
   04B64A  9f 63        BSET    0xFDC6.9
   04B64C  0d 07        JMPR    cc_UC, loc_04B65C
@@ -71967,7 +71967,7 @@ loc_04B65C:
   04B66C  8d 0d        JMPR    cc_ULT, loc_04B688
   04B66E  d7 40 18 00  EXTP    #0x18, #1
   04B672  c2 fc 64 02  MOVBZ   R12, 0x0264                       ; [60264]
-  04B676  42 fc 3a a4  CMP     R12, 0xA43A                       ; [6243A]
+  04B676  42 fc 3a a4  CMP     R12, 0xA43A                       ; [F243A]
   04B67A  ed 02        JMPR    cc_UGT, loc_04B680
   04B67C  5f 64        BSET    0xFDC8.5
   04B67E  0d 07        JMPR    cc_UC, loc_04B68E
@@ -72078,7 +72078,7 @@ loc_04B77E:
   04B77E  8a f8 0d 70  JB      R8.7, loc_04B79C
   04B782  d7 40 18 00  EXTP    #0x18, #1
   04B786  c2 fc 62 02  MOVBZ   R12, 0x0262                       ; [60262]
-  04B78A  42 fc 24 a4  CMP     R12, 0xA424                       ; [62424]
+  04B78A  42 fc 24 a4  CMP     R12, 0xA424                       ; [F2424]
   04B78E  ed 02        JMPR    cc_UGT, loc_04B794
   04B790  cf 63        BSET    0xFDC6.12
   04B792  0d 07        JMPR    cc_UC, loc_04B7A2
@@ -72132,7 +72132,7 @@ loc_04B80A:
   04B80A  9a 64 0d 90  JNB     0xFDC8.9, loc_04B828
   04B80E  d7 40 18 00  EXTP    #0x18, #1
   04B812  c2 fc 06 03  MOVBZ   R12, 0x0306                       ; [60306]
-  04B816  42 fc 28 a4  CMP     R12, 0xA428                       ; [62428]
+  04B816  42 fc 28 a4  CMP     R12, 0xA428                       ; [F2428]
   04B81A  ed 02        JMPR    cc_UGT, loc_04B820
   04B81C  bf 63        BSET    0xFDC6.11
   04B81E  0d 07        JMPR    cc_UC, loc_04B82E
@@ -72230,7 +72230,7 @@ loc_04B90E:
   04B91A  8a f8 0d 50  JB      R8.5, loc_04B938
   04B91E  d7 40 18 00  EXTP    #0x18, #1
   04B922  c2 fc 62 02  MOVBZ   R12, 0x0262                       ; [60262]
-  04B926  42 fc 3e a4  CMP     R12, 0xA43E                       ; [6243E]
+  04B926  42 fc 3e a4  CMP     R12, 0xA43E                       ; [F243E]
   04B92A  ed 02        JMPR    cc_UGT, loc_04B930
   04B92C  6f 63        BSET    0xFDC6.6
   04B92E  0d 07        JMPR    cc_UC, loc_04B93E
@@ -72274,7 +72274,7 @@ loc_04B972:
   04B982  3d 06        JMPR    cc_NE, loc_04B990
   04B984  d7 40 18 00  EXTP    #0x18, #1
   04B988  f3 f4 0a 03  MOVB    RL2, 0x030A                       ; [6030A]
-  04B98C  f7 f4 44 a4  MOVB    0xA444, RL2                       ; [62444]
+  04B98C  f7 f4 44 a4  MOVB    0xA444, RL2                       ; [F2444]
 loc_04B990:
   04B990  f3 f2 44 a4  MOVB    RL1, 0xA444                       ; [F2444]
   04B994  2d 04        JMPR    cc_EQ, loc_04B99E
@@ -72348,7 +72348,7 @@ loc_04BA16:
   04BA44  9a 64 0d a0  JNB     0xFDC8.10, loc_04BA62
   04BA48  d7 40 18 00  EXTP    #0x18, #1
   04BA4C  c2 fd 0e 03  MOVBZ   R13, 0x030E                       ; [6030E]
-  04BA50  42 fd 40 a4  CMP     R13, 0xA440                       ; [62440]
+  04BA50  42 fd 40 a4  CMP     R13, 0xA440                       ; [F2440]
   04BA54  ed 02        JMPR    cc_UGT, loc_04BA5A
   04BA56  1f 64        BSET    0xFDC8.1
   04BA58  0d 07        JMPR    cc_UC, loc_04BA68
@@ -72392,7 +72392,7 @@ loc_04BAA2:
   04BAB2  9a f8 0d 90  JNB     R8.9, loc_04BAD0
   04BAB6  d7 40 18 00  EXTP    #0x18, #1
   04BABA  c2 f6 64 02  MOVBZ   R6, 0x0264                        ; [60264]
-  04BABE  42 f6 42 a4  CMP     R6, 0xA442                        ; [62442]
+  04BABE  42 f6 42 a4  CMP     R6, 0xA442                        ; [F2442]
   04BAC2  ed 02        JMPR    cc_UGT, loc_04BAC8
   04BAC4  4f 64        BSET    0xFDC8.4
   04BAC6  0d 07        JMPR    cc_UC, loc_04BAD6
@@ -73328,7 +73328,7 @@ loc_04C40C:
 loc_04C424:
   04C424  d7 40 18 00  EXTP    #0x18, #1
   04C428  c2 f8 10 02  MOVBZ   R8, 0x0210                        ; [60210]
-  04C42C  42 f8 4e a4  CMP     R8, 0xA44E                        ; [6244E]
+  04C42C  42 f8 4e a4  CMP     R8, 0xA44E                        ; [F244E]
   04C430  ed 02        JMPR    cc_UGT, loc_04C436
   04C432  8f 65        BSET    0xFDCA.8
   04C434  0d 07        JMPR    cc_UC, loc_04C444
@@ -73484,7 +73484,7 @@ loc_04C59A:
   04C59A  4a 88 38 63  BMOV    0xFD70.3, PSW.6
   04C59E  d7 40 3d 00  EXTP    #0x3D, #1
   04C5A2  f6 f8 74 02  MOV     0x0274, R8                        ; [F4274]
-  04C5A6  f6 f9 56 a4  MOV     0xA456, R9                        ; [F6456]
+  04C5A6  f6 f9 56 a4  MOV     0xA456, R9                        ; [F2456]
   04C5AA  4a 38 65 29  BMOV    0xFDCA.9, 0xFD70.2
   04C5AE  f6 f6 50 a4  MOV     0xA450, R6                        ; [F2450]
   04C5B2  f6 f7 52 a4  MOV     0xA452, R7                        ; [F2452]
